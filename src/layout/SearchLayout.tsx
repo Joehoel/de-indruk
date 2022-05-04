@@ -1,9 +1,12 @@
-import { SearchBar, useThemeMode } from "@rneui/themed";
+import { useThemeMode } from "@rneui/themed";
 import { ReactNode, SetStateAction } from "react";
 import { Platform, StyleSheet, View } from "react-native";
+import SearchBar from "react-native-platform-searchbar";
 
 const styles = StyleSheet.create({
-    search: {},
+    search: {
+        padding: 10,
+    },
 });
 
 interface SearchLayoutProps {
@@ -22,8 +25,6 @@ export default function SearchLayout({
     return (
         <View>
             <SearchBar
-                platform={Platform.OS === "ios" ? "ios" : "android"}
-                lightTheme={mode === "light"}
                 value={query}
                 placeholder="Zoek..."
                 onChangeText={(text: string) => setQuery(text)}

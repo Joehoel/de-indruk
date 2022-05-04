@@ -1,11 +1,7 @@
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import AskScreen from "@screens/Faq/AskScreen";
 import FaqScreen from "@screens/Faq/FaqScreen";
-
-export type FaqTabList = {
-    Faq: undefined;
-    Ask: undefined;
-};
+import type { FaqTabList } from "@typings/navigation";
 
 const Tab = createMaterialTopTabNavigator<FaqTabList>();
 

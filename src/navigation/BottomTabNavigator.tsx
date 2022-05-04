@@ -1,25 +1,15 @@
 import TabItem from "@components/TabItem";
 import { Feather, FontAwesome, Ionicons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { NavigatorScreenParams } from "@react-navigation/native";
 import { Avatar, useTheme } from "@rneui/themed";
 import KoppelingenScreen from "@screens/Koppelingen";
 import ProfielScreen from "@screens/ProfielScherm";
+import type { BottomTabList } from "@typings/navigation";
 import React from "react";
 import { View } from "react-native";
-import ActueelStackNavigator, { ActueelTabList } from "./ActueelTabNavigator";
-import ContactenTabNavigator, {
-    ContactenTabList,
-} from "./ContactenTabNavigator";
-import FaqTabNavigator, { FaqTabList } from "./FaqTabNavigator";
-
-export type BottomTabList = {
-    ActueelTabs: NavigatorScreenParams<ActueelTabList> | undefined;
-    ContactenTabs: NavigatorScreenParams<ContactenTabList> | undefined;
-    FaqTabs: NavigatorScreenParams<FaqTabList>;
-    Koppelingen: undefined;
-    Profiel: undefined;
-};
+import ActueelStackNavigator from "./ActueelTabNavigator";
+import ContactenTabNavigator from "./ContactenTabNavigator";
+import FaqTabNavigator from "./FaqTabNavigator";
 
 const Tab = createBottomTabNavigator<BottomTabList>();
 

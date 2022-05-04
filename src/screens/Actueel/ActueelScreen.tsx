@@ -1,21 +1,9 @@
+import BerichtItem from "@components/BerichtItem";
 import SearchLayout from "@layout/SearchLayout";
 import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
-import { Text } from "@rneui/themed";
+import type { Item } from "@typings/Item";
 import React, { useState } from "react";
-import {
-    FlatList,
-    KeyboardAvoidingView,
-    StyleSheet,
-    TouchableOpacity,
-    View,
-} from "react-native";
-
-interface Item {
-    date: string;
-    tags: string[];
-    title: string;
-    icon?: string;
-}
+import { FlatList, KeyboardAvoidingView, StyleSheet } from "react-native";
 
 const items: Item[] = [
     {
@@ -106,14 +94,7 @@ export default function ActueelScreen() {
                     refreshing={refreshing}
                     keyExtractor={(item, index) => `${item.date}-${index}`}
                     contentContainerStyle={{ paddingBottom: height }}
-                    renderItem={({ item }) => (
-                        <TouchableOpacity style={styles.item}>
-                            <View style={styles.content}>
-                                <Text style={styles.date}>{item.date}</Text>
-                                <Text style={styles.title}>{item.title}</Text>
-                            </View>
-                        </TouchableOpacity>
-                    )}
+                    renderItem={({ item }) => <BerichtItem item={item} />}
                 />
             </KeyboardAvoidingView>
         </SearchLayout>
