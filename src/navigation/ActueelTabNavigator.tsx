@@ -1,5 +1,4 @@
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
-import ActueelScreen from "@screens/Actueel/ActueelScreen";
 import BijeenkomstenScreen from "@screens/Actueel/BijeenkomstenScreen";
 import type { ActueelTabList } from "@typings/navigation";
 

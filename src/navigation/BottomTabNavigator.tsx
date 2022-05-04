@@ -5,7 +5,6 @@ import { Avatar, useTheme } from "@rneui/themed";
 import KoppelingenScreen from "@screens/Koppelingen";
 import ProfielScreen from "@screens/ProfielScherm";
 import type { BottomTabList } from "@typings/navigation";
-import React from "react";
 import { View } from "react-native";
 import ActueelStackNavigator from "./ActueelTabNavigator";
 import ContactenTabNavigator from "./ContactenTabNavigator";

@@ -2,7 +2,7 @@ import BerichtItem from "@components/BerichtItem";
 import SearchLayout from "@layout/SearchLayout";
 import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
 import type { Item } from "@typings/Item";
-import React, { useState } from "react";
+import { useState } from "react";
 import { FlatList, KeyboardAvoidingView, StyleSheet } from "react-native";
 
 const items: Item[] = [
