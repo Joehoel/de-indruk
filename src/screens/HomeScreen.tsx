@@ -1,9 +1,10 @@
-import { Box, Text } from "native-base";
+import { Text } from "@rneui/themed";
+import { View } from "react-native";
 
 export default function HomeScreen() {
     return (
-        <Box>
+        <View>
             <Text>Home</Text>
-        </Box>
+        </View>
     );
 }

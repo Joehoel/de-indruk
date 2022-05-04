@@ -1,11 +1,16 @@
 import "react-native-get-random-values";
 
 import { randUser } from "@ngneat/falso";
-import { Avatar, Box, Text } from "native-base";
 import { AlphabetList } from "react-native-section-alphabet-list";
-import { GestureResponderEvent, StyleSheet, TouchableOpacity } from "react-native";
+import {
+    GestureResponderEvent,
+    StyleSheet,
+    TouchableOpacity,
+    View,
+} from "react-native";
 import SearchLayout from "@layout/SearchLayout";
 import { useState } from "react";
+import { Text, useTheme } from "@rneui/themed";
 
 const contacten = randUser({ length: 200 }).map(user => ({
     key: user.id,
@@ -20,6 +25,8 @@ const styles = StyleSheet.create({
 });
 
 export default function ContactgegevensScreen() {
+    const { theme } = useTheme();
+
     const [query, setQuery] = useState<string>("");
 
     const handlePress = (e: GestureResponderEvent) => {
@@ -32,10 +39,10 @@ export default function ContactgegevensScreen() {
                 scrollEventThrottle={16}
                 data={contacten}
                 renderCustomSectionHeader={({ title }) => (
-                    <Box
+                    <View
                         style={{
                             alignSelf: "flex-start",
-                            backgroundColor: "blue",
+                            backgroundColor: theme.colors.primary,
                             paddingLeft: 15,
                             paddingRight: 10,
                             paddingVertical: 5,
@@ -44,8 +51,10 @@ export default function ContactgegevensScreen() {
                             marginVertical: 10,
                         }}
                     >
-                        <Text style={{ color: "white" }}>{title}</Text>
-                    </Box>
+                        <Text style={{ color: theme.colors.white }}>
+                            {title}
+                        </Text>
+                    </View>
                 )}
                 renderCustomItem={item => (
                     <TouchableOpacity onPress={handlePress} style={styles.item}>

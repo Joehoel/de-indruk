@@ -1,10 +1,10 @@
 import { Text } from "@rneui/themed";
 import { View } from "react-native";
 
-export default function KoppelingenScreen() {
+export default function BerichtItem() {
     return (
         <View>
-            <Text>Koppelingen</Text>
+            <Text>Bericht</Text>
         </View>
     );
 }

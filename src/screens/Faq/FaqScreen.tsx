@@ -1,5 +1,5 @@
 import SearchLayout from "@layout/SearchLayout";
-import { Box, Text } from "native-base";
+import { Text } from "@rneui/themed";
 import { useState } from "react";
 
 export default function FaqScreen() {

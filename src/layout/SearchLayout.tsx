@@ -1,12 +1,9 @@
-import { Box } from "native-base";
+import { SearchBar, useThemeMode } from "@rneui/themed";
 import { ReactNode, SetStateAction } from "react";
-import { StyleSheet } from "react-native";
-import SearchBar from "react-native-platform-searchbar";
+import { Platform, StyleSheet, View } from "react-native";
 
 const styles = StyleSheet.create({
-    search: {
-        padding: 10,
-    },
+    search: {},
 });
 
 interface SearchLayoutProps {
@@ -15,16 +12,24 @@ interface SearchLayoutProps {
     query: string;
 }
 
-export default function SearchLayout({ children, setQuery, query }: SearchLayoutProps) {
+export default function SearchLayout({
+    children,
+    setQuery,
+    query,
+}: SearchLayoutProps) {
+    const mode = useThemeMode();
+
     return (
-        <Box>
+        <View>
             <SearchBar
+                platform={Platform.OS === "ios" ? "ios" : "android"}
+                lightTheme={mode === "light"}
                 value={query}
                 placeholder="Zoek..."
                 onChangeText={(text: string) => setQuery(text)}
                 style={styles.search}
             />
             {children}
-        </Box>
+        </View>
     );
 }

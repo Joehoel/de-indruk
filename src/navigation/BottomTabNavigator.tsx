@@ -1,11 +1,16 @@
+import TabItem from "@components/TabItem";
+import { Feather, FontAwesome, Ionicons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigatorScreenParams } from "@react-navigation/native";
+import { Avatar, useTheme } from "@rneui/themed";
 import KoppelingenScreen from "@screens/Koppelingen";
 import ProfielScreen from "@screens/ProfielScherm";
-import { Feather, FontAwesome, FontAwesome5, Ionicons } from "@expo/vector-icons";
-import { Avatar } from "native-base";
+import React from "react";
+import { View } from "react-native";
 import ActueelStackNavigator, { ActueelTabList } from "./ActueelTabNavigator";
-import ContactenTabNavigator, { ContactenTabList } from "./ContactenTabNavigator";
+import ContactenTabNavigator, {
+    ContactenTabList,
+} from "./ContactenTabNavigator";
 import FaqTabNavigator, { FaqTabList } from "./FaqTabNavigator";
 
 export type BottomTabList = {
@@ -19,13 +24,29 @@ export type BottomTabList = {
 const Tab = createBottomTabNavigator<BottomTabList>();
 
 export default function BottomTabNavigator() {
+    const { theme } = useTheme();
+
     return (
-        <Tab.Navigator initialRouteName="ActueelTabs" screenOptions={{ tabBarShowLabel: false }}>
+        <Tab.Navigator
+            initialRouteName="ActueelTabs"
+            screenOptions={{
+                tabBarShowLabel: false,
+                tabBarActiveTintColor: theme.colors.black,
+            }}
+        >
             <Tab.Screen
                 name="ActueelTabs"
                 options={{
                     title: "Actueel",
-                    tabBarIcon: () => <FontAwesome name="newspaper-o" size={25} />,
+                    tabBarIcon: ({ focused, color, size }) => (
+                        <TabItem focused={focused}>
+                            <FontAwesome
+                                name="newspaper-o"
+                                size={size}
+                                color={color}
+                            />
+                        </TabItem>
+                    ),
                 }}
                 component={ActueelStackNavigator}
             />
@@ -33,7 +54,11 @@ export default function BottomTabNavigator() {
                 name="ContactenTabs"
                 options={{
                     title: "Contacten",
-                    tabBarIcon: () => <Feather name="users" size={25} />,
+                    tabBarIcon: ({ focused, color, size }) => (
+                        <TabItem focused={focused}>
+                            <Feather name="users" size={size} color={color} />
+                        </TabItem>
+                    ),
                 }}
                 component={ContactenTabNavigator}
             />
@@ -41,7 +66,15 @@ export default function BottomTabNavigator() {
                 name="FaqTabs"
                 options={{
                     title: "Faq",
-                    tabBarIcon: () => <Ionicons name="chatbox-ellipses-outline" size={25} />,
+                    tabBarIcon: ({ focused, color, size }) => (
+                        <TabItem focused={focused}>
+                            <Ionicons
+                                name="chatbox-ellipses-outline"
+                                size={size}
+                                color={color}
+                            />
+                        </TabItem>
+                    ),
                 }}
                 component={FaqTabNavigator}
             />
@@ -49,7 +82,15 @@ export default function BottomTabNavigator() {
                 name="Koppelingen"
                 options={{
                     title: "Koppelingen",
-                    tabBarIcon: () => <Ionicons name="md-git-network-outline" size={25} />,
+                    tabBarIcon: ({ focused, color, size }) => (
+                        <TabItem focused={focused}>
+                            <Ionicons
+                                name="md-git-network-outline"
+                                size={size}
+                                color={color}
+                            />
+                        </TabItem>
+                    ),
                 }}
                 component={KoppelingenScreen}
             />
@@ -57,14 +98,21 @@ export default function BottomTabNavigator() {
                 name="Profiel"
                 options={{
                     title: "Mijn ...",
-                    tabBarIcon: () => (
-                        <Avatar
-                            source={{
-                                uri: "https://avatars.githubusercontent.com/u/31251240?s=400&u=54c0df6f19ffa5e937cd0d4dce274c280a402d61&v=4",
+                    tabBarIcon: ({ focused, color, size }) => (
+                        <View
+                            style={{
+                                borderWidth: 3,
+                                borderRadius: 50,
+                                borderColor: focused ? "blue" : color,
                             }}
-                            width={25}
-                            height={25}
-                        />
+                        >
+                            <Avatar
+                                rounded
+                                source={{
+                                    uri: "https://avatars.githubusercontent.com/u/31251240?s=400&u=54c0df6f19ffa5e937cd0d4dce274c280a402d61&v=4",
+                                }}
+                            />
+                        </View>
                     ),
                 }}
                 component={ProfielScreen}

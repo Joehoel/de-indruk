@@ -1,8 +1,14 @@
 import SearchLayout from "@layout/SearchLayout";
 import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
-import { Box, FlatList, KeyboardAvoidingView, Text } from "native-base";
+import { Text } from "@rneui/themed";
 import React, { useState } from "react";
-import { StyleSheet, TouchableOpacity } from "react-native";
+import {
+    FlatList,
+    KeyboardAvoidingView,
+    StyleSheet,
+    TouchableOpacity,
+    View,
+} from "react-native";
 
 interface Item {
     date: string;
@@ -12,16 +18,56 @@ interface Item {
 }
 
 const items: Item[] = [
-    { date: "2 mei 2022", tags: ["nieuws"], title: "Nieuwsbrief Sonneburgh april 2022" },
-    { date: "2 mei 2022", tags: ["nieuws"], title: "Nieuwsbrief Sonneburgh april 2022" },
-    { date: "2 mei 2022", tags: ["nieuws"], title: "Nieuwsbrief Sonneburgh april 2022" },
-    { date: "2 mei 2022", tags: ["nieuws"], title: "Nieuwsbrief Sonneburgh april 2022" },
-    { date: "2 mei 2022", tags: ["nieuws"], title: "Nieuwsbrief Sonneburgh april 2022" },
-    { date: "2 mei 2022", tags: ["nieuws"], title: "Nieuwsbrief Sonneburgh april 2022" },
-    { date: "2 mei 2022", tags: ["nieuws"], title: "Nieuwsbrief Sonneburgh april 2022" },
-    { date: "2 mei 2022", tags: ["nieuws"], title: "Nieuwsbrief Sonneburgh april 2022" },
-    { date: "2 mei 2022", tags: ["nieuws"], title: "Nieuwsbrief Sonneburgh april 2022" },
-    { date: "2 mei 2022", tags: ["nieuws"], title: "Nieuwsbrief Sonneburgh april 2022" },
+    {
+        date: "2 mei 2022",
+        tags: ["nieuws"],
+        title: "Nieuwsbrief Sonneburgh april 2022",
+    },
+    {
+        date: "2 mei 2022",
+        tags: ["nieuws"],
+        title: "Nieuwsbrief Sonneburgh april 2022",
+    },
+    {
+        date: "2 mei 2022",
+        tags: ["nieuws"],
+        title: "Nieuwsbrief Sonneburgh april 2022",
+    },
+    {
+        date: "2 mei 2022",
+        tags: ["nieuws"],
+        title: "Nieuwsbrief Sonneburgh april 2022",
+    },
+    {
+        date: "2 mei 2022",
+        tags: ["nieuws"],
+        title: "Nieuwsbrief Sonneburgh april 2022",
+    },
+    {
+        date: "2 mei 2022",
+        tags: ["nieuws"],
+        title: "Nieuwsbrief Sonneburgh april 2022",
+    },
+    {
+        date: "2 mei 2022",
+        tags: ["nieuws"],
+        title: "Nieuwsbrief Sonneburgh april 2022",
+    },
+    {
+        date: "2 mei 2022",
+        tags: ["nieuws"],
+        title: "Nieuwsbrief Sonneburgh april 2022",
+    },
+    {
+        date: "2 mei 2022",
+        tags: ["nieuws"],
+        title: "Nieuwsbrief Sonneburgh april 2022",
+    },
+    {
+        date: "2 mei 2022",
+        tags: ["nieuws"],
+        title: "Nieuwsbrief Sonneburgh april 2022",
+    },
 ];
 
 const styles = StyleSheet.create({
@@ -62,10 +108,10 @@ export default function ActueelScreen() {
                     contentContainerStyle={{ paddingBottom: height }}
                     renderItem={({ item }) => (
                         <TouchableOpacity style={styles.item}>
-                            <Box style={styles.content}>
+                            <View style={styles.content}>
                                 <Text style={styles.date}>{item.date}</Text>
                                 <Text style={styles.title}>{item.title}</Text>
-                            </Box>
+                            </View>
                         </TouchableOpacity>
                     )}
                 />
