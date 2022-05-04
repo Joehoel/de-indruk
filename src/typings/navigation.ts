@@ -6,8 +6,6 @@ import type {
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import type { Item } from "./Item";
 
-// TODO: Add comments
-
 // Tabs op de Actueel pagina
 export type ActueelTabList = {
     ActueelStack: undefined;
