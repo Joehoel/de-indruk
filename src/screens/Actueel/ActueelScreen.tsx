@@ -1,62 +1,77 @@
+import "react-native-get-random-values";
+
 import BerichtItem from "@components/BerichtItem";
 import SearchLayout from "@layout/SearchLayout";
+import {
+    randImg,
+    randJobTitle,
+    randPost,
+    randRecentDate,
+    randTextRange,
+} from "@ngneat/falso";
 import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
-import type { Item } from "@typings/Item";
 import { useState } from "react";
 import { FlatList, KeyboardAvoidingView, StyleSheet } from "react-native";
 
-const items: Item[] = [
-    {
-        date: "2 mei 2022",
-        tags: ["nieuws"],
-        title: "Nieuwsbrief Sonneburgh april 2022",
-    },
-    {
-        date: "2 mei 2022",
-        tags: ["nieuws"],
-        title: "Nieuwsbrief Sonneburgh april 2022",
-    },
-    {
-        date: "2 mei 2022",
-        tags: ["nieuws"],
-        title: "Nieuwsbrief Sonneburgh april 2022",
-    },
-    {
-        date: "2 mei 2022",
-        tags: ["nieuws"],
-        title: "Nieuwsbrief Sonneburgh april 2022",
-    },
-    {
-        date: "2 mei 2022",
-        tags: ["nieuws"],
-        title: "Nieuwsbrief Sonneburgh april 2022",
-    },
-    {
-        date: "2 mei 2022",
-        tags: ["nieuws"],
-        title: "Nieuwsbrief Sonneburgh april 2022",
-    },
-    {
-        date: "2 mei 2022",
-        tags: ["nieuws"],
-        title: "Nieuwsbrief Sonneburgh april 2022",
-    },
-    {
-        date: "2 mei 2022",
-        tags: ["nieuws"],
-        title: "Nieuwsbrief Sonneburgh april 2022",
-    },
-    {
-        date: "2 mei 2022",
-        tags: ["nieuws"],
-        title: "Nieuwsbrief Sonneburgh april 2022",
-    },
-    {
-        date: "2 mei 2022",
-        tags: ["nieuws"],
-        title: "Nieuwsbrief Sonneburgh april 2022",
-    },
-];
+const items = Array.from({ length: 20 }).map(i => ({
+    date: randRecentDate().toLocaleDateString(),
+    text: randTextRange({ min: 1000, max: 10000 }),
+    title: randJobTitle(),
+    image: randImg(),
+}));
+
+// const items: Item[] = [
+//     {
+//         date: "2 mei 2022",
+//         tags: ["nieuws"],
+//         title: "Nieuwsbrief Sonneburgh april 2022",
+//     },
+//     {
+//         date: "2 mei 2022",
+//         tags: ["nieuws"],
+//         title: "Nieuwsbrief Sonneburgh april 2022",
+//     },
+//     {
+//         date: "2 mei 2022",
+//         tags: ["nieuws"],
+//         title: "Nieuwsbrief Sonneburgh april 2022",
+//     },
+//     {
+//         date: "2 mei 2022",
+//         tags: ["nieuws"],
+//         title: "Nieuwsbrief Sonneburgh april 2022",
+//     },
+//     {
+//         date: "2 mei 2022",
+//         tags: ["nieuws"],
+//         title: "Nieuwsbrief Sonneburgh april 2022",
+//     },
+//     {
+//         date: "2 mei 2022",
+//         tags: ["nieuws"],
+//         title: "Nieuwsbrief Sonneburgh april 2022",
+//     },
+//     {
+//         date: "2 mei 2022",
+//         tags: ["nieuws"],
+//         title: "Nieuwsbrief Sonneburgh april 2022",
+//     },
+//     {
+//         date: "2 mei 2022",
+//         tags: ["nieuws"],
+//         title: "Nieuwsbrief Sonneburgh april 2022",
+//     },
+//     {
+//         date: "2 mei 2022",
+//         tags: ["nieuws"],
+//         title: "Nieuwsbrief Sonneburgh april 2022",
+//     },
+//     {
+//         date: "2 mei 2022",
+//         tags: ["nieuws"],
+//         title: "Nieuwsbrief Sonneburgh april 2022",
+//     },
+// ];
 
 const styles = StyleSheet.create({
     search: {

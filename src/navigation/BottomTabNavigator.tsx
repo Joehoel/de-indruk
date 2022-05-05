@@ -4,9 +4,9 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Avatar, useTheme } from "@rneui/themed";
 import KoppelingenScreen from "@screens/Koppelingen";
 import ProfielScreen from "@screens/ProfielScherm";
-import type { BottomTabList } from "@typings/navigation";
+import { BottomTabList } from "@typings/navigation";
 import { View } from "react-native";
-import ActueelStackNavigator from "./ActueelTabNavigator";
+import ActueelStackNavigator from "./ActueelStackNavigator";
 import ContactenTabNavigator from "./ContactenTabNavigator";
 import FaqTabNavigator from "./FaqTabNavigator";
 
@@ -17,16 +17,17 @@ export default function BottomTabNavigator() {
 
     return (
         <Tab.Navigator
-            initialRouteName="ActueelTabs"
+            initialRouteName="ActueelStack"
             screenOptions={{
                 tabBarShowLabel: false,
                 tabBarActiveTintColor: theme.colors.black,
             }}
         >
             <Tab.Screen
-                name="ActueelTabs"
+                name="ActueelStack"
                 options={{
                     title: "Actueel",
+                    headerShown: false,
                     tabBarIcon: ({ focused, color, size }) => (
                         <TabItem focused={focused}>
                             <FontAwesome

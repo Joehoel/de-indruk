@@ -1,32 +1,36 @@
 import type { MaterialBottomTabNavigationProp } from "@react-navigation/material-bottom-tabs";
 import type {
     CompositeNavigationProp,
+    NavigationProp,
     NavigatorScreenParams,
 } from "@react-navigation/native";
-import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import type {
+    NativeStackNavigationProp,
+    NativeStackScreenProps,
+} from "@react-navigation/native-stack";
 import type { Item } from "./Item";
 
 // Tabs op de Actueel pagina
 export type ActueelTabList = {
-    ActueelStack: undefined;
+    Actueel: undefined;
     Bijeenkomsten: undefined;
 };
 
-// Schermen binnen de actueel tab zodat je van een item in de actueel view naar een bericht kan gaan
-export type ActueelStackNavigatorList = {
-    Actueel: undefined;
+export type ActueelStackList = {
+    ActueelTabs: NavigatorScreenParams<ActueelTabList> | undefined;
     Bericht: { item: Item };
 };
 
 // Utility type om het gebruik van `useNavigation` makkelijker te maken
-export type BerichtScreenNavigationProp = CompositeNavigationProp<
-    NativeStackNavigationProp<ActueelStackNavigatorList, "Bericht">,
-    MaterialBottomTabNavigationProp<ActueelTabList>
+export type BerichtScreenNavigationProp = NavigationProp<ActueelStackList>;
+export type BerichtScreenProps = NativeStackScreenProps<
+    ActueelStackList,
+    "Bericht"
 >;
 
 // Alle tabs die zichtbaar zijn in de bottom bar
 export type BottomTabList = {
-    ActueelTabs: NavigatorScreenParams<ActueelTabList> | undefined;
+    ActueelStack: NavigatorScreenParams<ActueelStackList> | undefined;
     ContactenTabs: NavigatorScreenParams<ContactenTabList> | undefined;
     FaqTabs: NavigatorScreenParams<FaqTabList>;
     Koppelingen: undefined;

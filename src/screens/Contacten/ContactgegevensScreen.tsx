@@ -2,12 +2,8 @@ import "react-native-get-random-values";
 
 import { randUser } from "@ngneat/falso";
 import { AlphabetList } from "react-native-section-alphabet-list";
-import {
-    GestureResponderEvent,
-    StyleSheet,
-    TouchableOpacity,
-    View,
-} from "react-native";
+import type { GestureResponderEvent } from "react-native";
+import { StyleSheet, TouchableOpacity, View } from "react-native";
 import SearchLayout from "@layout/SearchLayout";
 import { useState } from "react";
 import { Text, useTheme } from "@rneui/themed";

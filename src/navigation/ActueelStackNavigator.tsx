@@ -1,15 +1,32 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import ActueelScreen from "@screens/Actueel/ActueelScreen";
+import { useTheme } from "@rneui/themed";
 import BerichtScreen from "@screens/Actueel/BerichtScreen";
-import type { ActueelStackNavigatorList } from "@typings/navigation";
+import { ActueelStackList } from "@typings/navigation";
+import ActueelTabNavigator from "./ActueelTabNavigator";
 
-const Stack = createNativeStackNavigator<ActueelStackNavigatorList>();
+const Stack = createNativeStackNavigator<ActueelStackList>();
 
 export default function ActueelStackNavigator() {
+    const { theme } = useTheme();
+
     return (
-        <Stack.Navigator initialRouteName="Actueel">
-            <Stack.Screen name="Actueel" component={ActueelScreen} />
-            <Stack.Screen name="Bericht" component={BerichtScreen} />
+        <Stack.Navigator
+            initialRouteName="ActueelTabs"
+            screenOptions={{
+                headerBackTitle: "Overzicht",
+                headerTintColor: theme.colors.primary,
+            }}
+        >
+            <Stack.Screen
+                name="ActueelTabs"
+                options={{ title: "Actueel" }}
+                component={ActueelTabNavigator}
+            />
+            <Stack.Screen
+                name="Bericht"
+                options={{ title: "Berichten" }}
+                component={BerichtScreen}
+            />
         </Stack.Navigator>
     );
 }

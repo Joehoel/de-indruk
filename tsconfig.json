@@ -6,15 +6,17 @@
         "strict": true,
         "strictNullChecks": true,
         "baseUrl": ".",
+        "typeRoots": ["./src/typings", "node_modules/@types"],
         "paths": {
-            "tests": ["tests/*"],
             "@components/*": ["src/components/*"],
             "@hooks/*": ["src/hooks/*"],
             "@lib/*": ["src/lib/*"],
             "@layout/*": ["src/layout/*"],
             "@screens/*": ["src/screens/*"],
             "@stores/*": ["src/stores/*"],
-            "@typings/*": ["src/typings/*"]
+            "@typings/*": ["src/typings/*"],
+            "@navigation/*": ["src/navigation/*"]
         }
-    }
+    },
+    "exclude": ["node_modules/"]
 }
