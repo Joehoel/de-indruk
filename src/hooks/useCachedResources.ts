@@ -1,5 +1,3 @@
-/* eslint-disable camelcase */
-
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect, useState } from "react";
 
