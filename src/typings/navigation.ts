@@ -1,14 +1,9 @@
-import type { MaterialBottomTabNavigationProp } from "@react-navigation/material-bottom-tabs";
 import type {
-    CompositeNavigationProp,
     NavigationProp,
     NavigatorScreenParams,
 } from "@react-navigation/native";
-import type {
-    NativeStackNavigationProp,
-    NativeStackScreenProps,
-} from "@react-navigation/native-stack";
-import type { Item } from "./Item";
+import type { NativeStackScreenProps } from "@react-navigation/native-stack";
+import type { ItemType } from "@typings";
 
 // Tabs op de Actueel pagina
 export type ActueelTabList = {
@@ -18,7 +13,7 @@ export type ActueelTabList = {
 
 export type ActueelStackList = {
     ActueelTabs: NavigatorScreenParams<ActueelTabList> | undefined;
-    Bericht: { item: Item };
+    Bericht: { item: ItemType };
 };
 
 // Utility type om het gebruik van `useNavigation` makkelijker te maken

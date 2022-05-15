@@ -1,10 +1,11 @@
 import TabItem from "@components/TabItem";
 import { Feather, FontAwesome, Ionicons } from "@expo/vector-icons";
+import { useTheme } from "@lib/theme";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Avatar, useTheme } from "@rneui/themed";
-import KoppelingenScreen from "@screens/Koppelingen";
-import ProfielScreen from "@screens/ProfielScherm";
-import { BottomTabList } from "@typings/navigation";
+import { Avatar } from "@rneui/themed";
+import KoppelingenScreen from "@screens/KoppelingenScreen";
+import ProfielScreen from "@screens/ProfielScreen";
+import type { BottomTabList } from "@typings/navigation";
 import { View } from "react-native";
 import ActueelStackNavigator from "./ActueelStackNavigator";
 import ContactenTabNavigator from "./ContactenTabNavigator";
@@ -13,7 +14,7 @@ import FaqTabNavigator from "./FaqTabNavigator";
 const Tab = createBottomTabNavigator<BottomTabList>();
 
 export default function BottomTabNavigator() {
-    const { theme } = useTheme();
+    const theme = useTheme();
 
     return (
         <Tab.Navigator
@@ -21,6 +22,7 @@ export default function BottomTabNavigator() {
             screenOptions={{
                 tabBarShowLabel: false,
                 tabBarActiveTintColor: theme.colors.black,
+                headerTintColor: theme.colors.primary,
             }}
         >
             <Tab.Screen

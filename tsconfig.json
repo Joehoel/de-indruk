@@ -6,7 +6,6 @@
         "strict": true,
         "strictNullChecks": true,
         "baseUrl": ".",
-        "typeRoots": ["./src/typings", "node_modules/@types"],
         "paths": {
             "@components/*": ["src/components/*"],
             "@hooks/*": ["src/hooks/*"],
@@ -15,8 +14,9 @@
             "@screens/*": ["src/screens/*"],
             "@stores/*": ["src/stores/*"],
             "@typings/*": ["src/typings/*"],
-            "@navigation/*": ["src/navigation/*"]
+            "@typings": ["src/typings"],
+            "@navigation/*": ["src/navigation/*"],
+            "@constants/*": ["src/constants/*"]
         }
-    },
-    "exclude": ["node_modules/"]
+    }
 }

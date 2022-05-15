@@ -1,11 +1,12 @@
+import spacing from "@constants/spacing";
 import { useThemeMode } from "@rneui/themed";
-import { ReactNode, SetStateAction } from "react";
+import type { ReactNode, SetStateAction } from "react";
 import { Platform, StyleSheet, View } from "react-native";
 import SearchBar from "react-native-platform-searchbar";
 
 const styles = StyleSheet.create({
     search: {
-        padding: 10,
+        padding: spacing.sm,
     },
 });
 

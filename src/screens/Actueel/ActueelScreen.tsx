@@ -73,23 +73,6 @@ const items = Array.from({ length: 20 }).map(i => ({
 //     },
 // ];
 
-const styles = StyleSheet.create({
-    search: {
-        padding: 10,
-    },
-    item: {
-        padding: 10,
-    },
-    content: {
-        flexDirection: "column",
-        flex: 1,
-    },
-    title: { fontWeight: "700", marginTop: 5 },
-    date: {
-        fontWeight: "500",
-    },
-});
-
 export default function ActueelScreen() {
     const [query, setQuery] = useState<string>("");
     const [refreshing, setRefreshing] = useState(false);

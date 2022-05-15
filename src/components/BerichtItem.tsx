@@ -1,10 +1,10 @@
 import { useNavigation } from "@react-navigation/native";
-import { Text } from "@rneui/themed";
-import type { Item } from "@typings/Item";
+import { makeStyles, Text } from "@rneui/themed";
+import type { ItemType } from "@typings";
 import type { BerichtScreenNavigationProp } from "@typings/navigation";
 import { StyleSheet, TouchableOpacity, View } from "react-native";
 
-const styles = StyleSheet.create({
+const useStyles = makeStyles(theme => ({
     item: {
         padding: 10,
     },
@@ -15,16 +15,18 @@ const styles = StyleSheet.create({
     title: { fontWeight: "700", marginTop: 5 },
     date: {
         fontWeight: "500",
+        color: theme.colors?.text,
     },
-});
+}));
 
 interface BerichtItemProps {
-    item: Item;
+    item: ItemType;
 }
 
 export default function BerichtItem({ item }: BerichtItemProps) {
     const navigation = useNavigation<BerichtScreenNavigationProp>();
 
+    const styles = useStyles();
     const handlePress = () => {
         navigation.navigate("Bericht", { item });
     };

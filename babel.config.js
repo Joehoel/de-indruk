@@ -16,7 +16,6 @@ module.exports = function (api) {
                         ".json",
                     ],
                     alias: {
-                        tests: ["./tests/"],
                         "@components": "./src/components",
                         "@hooks": "./src/hooks",
                         "@lib": "./src/lib",
@@ -25,14 +24,10 @@ module.exports = function (api) {
                         "@stores": "./src/stores",
                         "@typings": "./src/typings",
                         "@navigation": "./src/navigation",
+                        "@constants": "./src/constants",
                     },
                 },
             ],
         ],
-        env: {
-            production: {
-                plugins: ["react-native-paper/babel"],
-            },
-        },
     };
 };

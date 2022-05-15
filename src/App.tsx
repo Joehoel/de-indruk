@@ -1,6 +1,7 @@
 /* eslint-disable react/style-prop-object */
+import useCachedResources from "@hooks/useCachedResources";
 import useColorScheme from "@hooks/useColorScheme";
-import theme from "@lib/theme";
+import { theme, darkTheme } from "@lib/theme";
 import BottomTabNavigator from "@navigation/BottomTabNavigator";
 import {
     DarkTheme,
@@ -10,25 +11,26 @@ import {
 import { ThemeProvider } from "@rneui/themed";
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaProvider } from "react-native-safe-area-context";
+import { ThemeProvider as RestyleProvider } from "@shopify/restyle";
 
 export default function App() {
-    // const loading = useCachedResources();
+    const isLoadingComplete = useCachedResources();
     const colorScheme = useColorScheme();
 
-    // if (loading) {
-    //     return null;
-    // }
+    if (!isLoadingComplete) {
+        return null;
+    }
 
     return (
-        <ThemeProvider theme={theme}>
-            <NavigationContainer
-                theme={colorScheme === "dark" ? DarkTheme : DefaultTheme}
-            >
-                <SafeAreaProvider>
-                    <BottomTabNavigator />
-                    <StatusBar style="auto" />
-                </SafeAreaProvider>
-            </NavigationContainer>
-        </ThemeProvider>
+        <RestyleProvider theme={theme}>
+            <ThemeProvider>
+                <NavigationContainer>
+                    <SafeAreaProvider>
+                        <BottomTabNavigator />
+                        <StatusBar style="auto" />
+                    </SafeAreaProvider>
+                </NavigationContainer>
+            </ThemeProvider>
+        </RestyleProvider>
     );
 }

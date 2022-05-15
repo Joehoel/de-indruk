@@ -1,5 +1,5 @@
+import { useTheme } from "@lib/theme";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
-import { useTheme } from "@rneui/themed";
 import ActueelScreen from "@screens/Actueel/ActueelScreen";
 import BijeenkomstenScreen from "@screens/Actueel/BijeenkomstenScreen";
 import type { ActueelTabList } from "@typings/navigation";
@@ -7,7 +7,7 @@ import type { ActueelTabList } from "@typings/navigation";
 const Tab = createMaterialTopTabNavigator<ActueelTabList>();
 
 export default function ActueelTabNavigator() {
-    const { theme } = useTheme();
+    const theme = useTheme();
 
     return (
         <Tab.Navigator

@@ -1,10 +1,10 @@
-import { Text } from "@rneui/themed";
-import { View } from "react-native";
+import Box from "@components/Box";
+import Text from "@components/Text";
 
 export default function AskScreen() {
     return (
-        <View>
+        <Box>
             <Text>Ask</Text>
-        </View>
+        </Box>
     );
 }

@@ -1,6 +1,10 @@
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect, useState } from "react";
 
+/**
+ * It loads resources and data asynchronously, and then sets the loading state to complete
+ * @returns A boolean value that is true when the app is loaded.
+ */
 export default function useCachedResources() {
     const [isLoadingComplete, setLoadingComplete] = useState(false);
     // Load any resources or data that we need prior to rendering the app

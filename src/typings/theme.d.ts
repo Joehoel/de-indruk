@@ -6,6 +6,7 @@ type RecursivePartial<T> = { [P in keyof T]?: RecursivePartial<T[P]> };
 declare module "@rneui/themed" {
     export interface Colors {
         // TODO: Implement
+        text: string;
     }
 
     export interface FullTheme {

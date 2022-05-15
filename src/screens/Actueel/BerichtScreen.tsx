@@ -15,6 +15,8 @@ const useStyles = makeStyles(theme => ({
 
 const { width } = Dimensions.get("window");
 
+const HEADER_HEIGHT = 250;
+
 export default function BerichtScreen({ route }: BerichtScreenProps) {
     const styles = useStyles();
     const { theme } = useTheme();
@@ -25,12 +27,13 @@ export default function BerichtScreen({ route }: BerichtScreenProps) {
         <ParallaxScrollView
             backgroundColor={theme.colors.background}
             contentBackgroundColor={theme.colors.background}
-            parallaxHeaderHeight={250}
+            parallaxHeaderHeight={HEADER_HEIGHT}
             renderForeground={() => (
                 <View>
                     <Image
                         source={{ uri: item.image }}
-                        style={{ height: 250, width }}
+                        resizeMode="cover"
+                        style={{ height: HEADER_HEIGHT, width }}
                     />
                 </View>
             )}

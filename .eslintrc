@@ -43,6 +43,6 @@
         "react/jsx-props-no-spreading": "off",
         "react/require-default-props": "off",
         "radix": "off",
-        "@typescript-eslint/consistent-type-imports": "off"
+        "@typescript-eslint/consistent-type-imports": "error"
     }
 }

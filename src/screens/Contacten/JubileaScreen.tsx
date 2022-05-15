@@ -1,5 +1,5 @@
+import Text from "@components/Text";
 import SearchLayout from "@layout/SearchLayout";
-import { Text } from "@rneui/themed";
 import { useState } from "react";
 
 export default function JubileaScreen() {

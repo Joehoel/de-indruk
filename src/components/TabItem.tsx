@@ -1,4 +1,4 @@
-import { useTheme } from "@rneui/themed";
+import { useTheme } from "@lib/theme";
 import type { ReactNode } from "react";
 import { View } from "react-native";
 
@@ -8,7 +8,7 @@ interface TabItemProps {
 }
 
 export default function TabItem({ children, focused }: TabItemProps) {
-    const { theme } = useTheme();
+    const theme = useTheme();
 
     return (
         <View
