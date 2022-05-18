@@ -1,15 +1,18 @@
 import TabItem from "@components/TabItem";
+import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { Feather, FontAwesome, Ionicons } from "@expo/vector-icons";
 import { useTheme } from "@lib/theme";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Avatar } from "@rneui/themed";
+import DashboardScreen from "@screens/DashboardScreen";
 import KoppelingenScreen from "@screens/KoppelingenScreen";
-import ProfielScreen from "@screens/ProfielScreen";
 import type { BottomTabList } from "@typings/navigation";
 import { View } from "react-native";
+import { faBell } from "@fortawesome/free-regular-svg-icons";
 import ActueelStackNavigator from "./ActueelStackNavigator";
 import ContactenTabNavigator from "./ContactenTabNavigator";
 import FaqTabNavigator from "./FaqTabNavigator";
+import ProfielStackNavigator from "./ProfielStackNavigator";
 
 const Tab = createBottomTabNavigator<BottomTabList>();
 
@@ -20,12 +23,27 @@ export default function BottomTabNavigator() {
         <Tab.Navigator
             initialRouteName="ActueelStack"
             screenOptions={{
+                headerShown: false,
                 tabBarShowLabel: false,
-                tabBarActiveTintColor: theme.colors.black,
-                headerTintColor: theme.colors.primary,
+                // tabBarShowLabel: false,
+                // tabBarActiveTintColor: theme.colors.black,
+                // headerTintColor: theme.colors.primary,
             }}
         >
             <Tab.Screen
+                name="Dashboard"
+                options={{
+                    tabBarIcon: ({ color, focused, size }) => (
+                        <FontAwesomeIcon
+                            icon={faBell}
+                            size={20}
+                            color={color}
+                        />
+                    ),
+                }}
+                component={DashboardScreen}
+            />
+            {/* <Tab.Screen
                 name="ActueelStack"
                 options={{
                     title: "Actueel",
@@ -87,9 +105,9 @@ export default function BottomTabNavigator() {
                 component={KoppelingenScreen}
             />
             <Tab.Screen
-                name="Profiel"
+                name="ProfielStack"
                 options={{
-                    title: "Mijn ...",
+                    headerShown: false,
                     tabBarIcon: ({ focused, color, size }) => (
                         <View
                             style={{
@@ -107,8 +125,8 @@ export default function BottomTabNavigator() {
                         </View>
                     ),
                 }}
-                component={ProfielScreen}
-            />
+                component={ProfielStackNavigator}
+            /> */}
         </Tab.Navigator>
     );
 }

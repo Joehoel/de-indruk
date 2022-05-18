@@ -1,13 +1,12 @@
-import Question from "@components/Question";
+import Text from "@components/Text";
+import spacing from "@constants/spacing";
+import { Feather } from "@expo/vector-icons";
 import SearchLayout from "@layout/SearchLayout";
-import { makeStyles, Text, useTheme } from "@rneui/themed";
+import { makeStyles, useTheme } from "@lib/theme";
 import type { QuestionType } from "@typings";
 import React, { useState } from "react";
+import { TouchableOpacity, View } from "react-native";
 import Accordion from "react-native-collapsible/Accordion";
-import { FlatList, TouchableOpacity, View } from "react-native";
-import spacing from "@constants/spacing";
-import { Feather, FontAwesome, Ionicons } from "@expo/vector-icons";
-import Separator from "@components/Separator";
 
 const questions: QuestionType[] = [
     {
@@ -51,6 +50,10 @@ const useStyles = makeStyles(theme => ({
         fontWeight: "bold",
         fontSize: 14,
         width: "70%",
+        color: theme.colors?.primary,
+    },
+    answer: {
+        color: theme.colors.tertiary,
     },
     content: { paddingBottom: spacing.lg },
     container: {
@@ -58,12 +61,13 @@ const useStyles = makeStyles(theme => ({
         height: "100%",
     },
     sectionContainer: {
-        borderBottomColor: theme.colors?.grey4,
-        borderBottomWidth: 2,
+        borderBottomColor: theme.colors?.tertiary,
+        borderBottomWidth: 1,
     },
 }));
 
 export default function FaqScreen() {
+    const theme = useTheme();
     const styles = useStyles();
 
     const [query, setQuery] = useState<string>("");
@@ -81,15 +85,23 @@ export default function FaqScreen() {
                     <View style={styles.header}>
                         <Text style={styles.question}>{question}</Text>
                         {active ? (
-                            <Feather name="minus" size={20} />
+                            <Feather
+                                name="minus"
+                                size={20}
+                                color={theme.colors.primary}
+                            />
                         ) : (
-                            <Feather name="plus" size={20} />
+                            <Feather
+                                name="plus"
+                                size={20}
+                                color={theme.colors.primary}
+                            />
                         )}
                     </View>
                 )}
                 renderContent={({ answer }) => (
                     <View style={styles.content}>
-                        <Text>{answer}</Text>
+                        <Text style={styles.answer}>{answer}</Text>
                     </View>
                 )}
                 expandMultiple

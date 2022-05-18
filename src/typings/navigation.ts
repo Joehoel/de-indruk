@@ -16,6 +16,12 @@ export type ActueelStackList = {
     Bericht: { item: ItemType };
 };
 
+export type ProfielStackList = {
+    Profiel: undefined;
+    ProfielBewerken: undefined;
+};
+export type ProfielStackNavigationProp = NavigationProp<ProfielStackList>;
+
 // Utility type om het gebruik van `useNavigation` makkelijker te maken
 export type BerichtScreenNavigationProp = NavigationProp<ActueelStackList>;
 export type BerichtScreenProps = NativeStackScreenProps<
@@ -25,11 +31,12 @@ export type BerichtScreenProps = NativeStackScreenProps<
 
 // Alle tabs die zichtbaar zijn in de bottom bar
 export type BottomTabList = {
+    Dashboard: undefined;
     ActueelStack: NavigatorScreenParams<ActueelStackList> | undefined;
     ContactenTabs: NavigatorScreenParams<ContactenTabList> | undefined;
     FaqTabs: NavigatorScreenParams<FaqTabList>;
     Koppelingen: undefined;
-    Profiel: undefined;
+    ProfielStack: undefined;
 };
 
 // Alle tabbladen binnen de contacten view

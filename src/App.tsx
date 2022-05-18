@@ -1,33 +1,37 @@
 /* eslint-disable react/style-prop-object */
 import useCachedResources from "@hooks/useCachedResources";
-import useColorScheme from "@hooks/useColorScheme";
-import { theme, darkTheme } from "@lib/theme";
+import { useTheme, theme as reTheme } from "@lib/theme";
 import BottomTabNavigator from "@navigation/BottomTabNavigator";
-import {
-    DarkTheme,
-    DefaultTheme,
-    NavigationContainer,
-} from "@react-navigation/native";
+import { DefaultTheme, NavigationContainer } from "@react-navigation/native";
 import { ThemeProvider } from "@rneui/themed";
+import { ThemeProvider as RestyleProvider } from "@shopify/restyle";
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import { ThemeProvider as RestyleProvider } from "@shopify/restyle";
 
 export default function App() {
     const isLoadingComplete = useCachedResources();
-    const colorScheme = useColorScheme();
+    const theme = useTheme();
 
     if (!isLoadingComplete) {
         return null;
     }
 
+    const navigationTheme: typeof DefaultTheme = {
+        ...DefaultTheme,
+        colors: {
+            ...DefaultTheme.colors,
+            background: theme.colors.white,
+            primary: theme.colors.primary,
+        },
+    };
+
     return (
-        <RestyleProvider theme={theme}>
+        <RestyleProvider theme={reTheme}>
             <ThemeProvider>
-                <NavigationContainer>
+                <NavigationContainer theme={navigationTheme}>
                     <SafeAreaProvider>
                         <BottomTabNavigator />
-                        <StatusBar style="auto" />
+                        <StatusBar style="dark" />
                     </SafeAreaProvider>
                 </NavigationContainer>
             </ThemeProvider>

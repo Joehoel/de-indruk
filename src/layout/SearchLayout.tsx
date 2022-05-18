@@ -1,14 +1,18 @@
 import spacing from "@constants/spacing";
+import { makeStyles } from "@lib/theme";
 import { useThemeMode } from "@rneui/themed";
 import type { ReactNode, SetStateAction } from "react";
 import { Platform, StyleSheet, View } from "react-native";
 import SearchBar from "react-native-platform-searchbar";
 
-const styles = StyleSheet.create({
+const useStyles = makeStyles(theme => ({
     search: {
         padding: spacing.sm,
     },
-});
+    cancel: {
+        color: theme.colors.primary,
+    },
+}));
 
 interface SearchLayoutProps {
     children: ReactNode;
@@ -21,7 +25,7 @@ export default function SearchLayout({
     setQuery,
     query,
 }: SearchLayoutProps) {
-    const mode = useThemeMode();
+    const styles = useStyles();
 
     return (
         <View>
@@ -30,6 +34,7 @@ export default function SearchLayout({
                 placeholder="Zoek..."
                 onChangeText={(text: string) => setQuery(text)}
                 style={styles.search}
+                cancelTextStyle={styles.cancel}
             />
             {children}
         </View>

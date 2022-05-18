@@ -1,13 +1,18 @@
+import type { ReactNode } from "react";
+
 // TODO: Add all types
 declare module "react-native-alphabetlistview" {
-    import React from "react";
+    import type React from "react";
 
-    declare function AlphabetListView<T>(): React.FunctionComponent<{
+    declare function SelectableSectionsListView<T>(): React.FunctionComponent<{
         data: T;
-        hideSectionList: boolean;
-        getSectionTitle: (...args: any[]) => string;
-        getSectionListTitle: (...args: any[]) => string;
-        onCellSelect: () => void;
+        hideSectionList?: boolean;
+        cell: ReactNode;
+        sectionHeaderHeight: number;
+        cellHeight: number;
+        getSectionTitle?: (...args: any[]) => string;
+        getSectionListTitle?: (...args: any[]) => string;
+        onCellSelect?: () => void;
     }>;
-    export default AlphabetListView;
+    export default SelectableSectionsListView;
 }

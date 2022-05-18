@@ -16,7 +16,8 @@
             "@typings/*": ["src/typings/*"],
             "@typings": ["src/typings"],
             "@navigation/*": ["src/navigation/*"],
-            "@constants/*": ["src/constants/*"]
+            "@constants/*": ["src/constants/*"],
+            "@services/*": ["src/services/*"]
         }
     }
 }

@@ -1,9 +1,8 @@
 import Box from "@components/Box";
 import Text from "@components/Text";
-import { Feather, FontAwesome, Ionicons } from "@expo/vector-icons";
+import { AntDesign, Feather, FontAwesome } from "@expo/vector-icons";
 import { makeStyles } from "@lib/theme";
 import { Avatar } from "@rneui/themed";
-import type { ReactNode } from "react";
 
 const useStyles = makeStyles(theme => ({
     hero: {
@@ -61,6 +60,31 @@ export default function ProfielScreen() {
                         <FontAwesome name="phone" color="white" size={18} />
                     </Box>
                     <Text variant="small">0624852983</Text>
+                </Box>
+                <Box style={styles.item}>
+                    <Box style={styles.icon}>
+                        <Feather name="mail" color="white" size={18} />
+                    </Box>
+                    <Text variant="small">jmkuijper@outlook.com</Text>
+                </Box>
+                <Box style={styles.item}>
+                    <Box style={styles.icon}>
+                        <FontAwesome
+                            name="birthday-cake"
+                            color="white"
+                            size={18}
+                        />
+                    </Box>
+                    <Text variant="small">19 Januari 2003</Text>
+                </Box>
+                <Box style={styles.item}>
+                    <Box style={styles.icon}>
+                        <AntDesign name="contacts" color="white" size={18} />
+                    </Box>
+                    <Box>
+                        <Text variant="h4">Biografie</Text>
+                        <Text variant="small">19, HBO-ICT</Text>
+                    </Box>
                 </Box>
             </Box>
         </Box>

@@ -25,6 +25,7 @@ module.exports = function (api) {
                         "@typings": "./src/typings",
                         "@navigation": "./src/navigation",
                         "@constants": "./src/constants",
+                        "@services": "./src/services",
                     },
                 },
             ],

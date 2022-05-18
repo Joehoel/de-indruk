@@ -1,5 +1,7 @@
+/* eslint-disable global-require */
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect, useState } from "react";
+import * as Font from "expo-font";
 
 /**
  * It loads resources and data asynchronously, and then sets the loading state to complete
@@ -15,6 +17,12 @@ export default function useCachedResources() {
                 SplashScreen.preventAutoHideAsync();
                 console.log("Loading app...");
                 // Load fonts
+
+                await Font.loadAsync({
+                    "Gilroy-SemiBold": require("../../assets/fonts/Gilroy-SemiBold.ttf"),
+                    "Gilroy-Bold": require("../../assets/fonts/Gilroy-Bold.ttf"),
+                    "Gilroy-Medium": require("../../assets/fonts/Gilroy-Medium.ttf"),
+                });
             } catch (e) {
                 // We might want to provide this error information to an error reporting service
 

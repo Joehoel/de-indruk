@@ -1,7 +1,6 @@
 import { Alert, ToastAndroid, Platform } from "react-native";
-import { Component } from "react";
 
-export class Message extends Component {
+export class Message {
     static success(message: string) {
         Message.send("Gelukt!", message);
     }

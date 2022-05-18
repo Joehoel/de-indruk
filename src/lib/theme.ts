@@ -1,3 +1,4 @@
+import { ThemeConsumer } from "@rneui/themed";
 import { createTheme, useTheme as useReTheme } from "@shopify/restyle";
 import type { ImageStyle, TextStyle, ViewStyle } from "react-native";
 import { Dimensions } from "react-native";
@@ -13,53 +14,92 @@ export const theme = createTheme({
     breakpoints: {},
     colors: {
         ...palette,
-        text: palette.black,
-        background: palette.lightGray,
+        text: palette.darkBlue,
+        background: palette.white,
     },
     borderRadii: {
         none: 0,
-        xs: 5,
+        xs: 15,
+        sm: 21,
+        md: 24,
     },
     spacing: {
         none: 0,
-        xs: 5,
-        sm: 10,
-        md: 15,
-        lg: 20,
-        xl: 40,
-        "2xl": 80,
-        "3xl": 100,
+        xs: 15,
+        sm: 21,
+        md: 24,
     },
     zIndices: {},
+    cardVariants: {},
     textVariants: {
         defaults: {},
-        // bold: {},
-        body: {
-            fontSize: 16,
+        semibold: {
+            fontFamily: "Gilroy-SemiBold",
+            color: "text",
         },
-        small: {
-            fontSize: 14,
-            color: "primary",
+        bold: {
+            fontFamily: "Gilroy-Bold",
+            color: "text",
+        },
+        h1: {
+            fontSize: 40,
+            fontFamily: "Gilroy-Medium",
+            color: "text",
         },
         h2: {
-            fontSize: 23,
-            fontWeight: "bold",
-            color: "primary",
+            fontSize: 22,
+            lineHeight: 27,
+            fontFamily: "Gilroy-Semibold",
+            color: "text",
         },
+        h3: {
+            fontSize: 18,
+            fontFamily: "Gilroy-Semibold",
+            lineHeight: 18,
+            color: "text",
+        },
+        h4: {
+            fontSize: 18,
+            fontFamily: "Gilroy-Bold",
+            lineHeight: 18,
+        },
+        // defaults: {
+        //     color: "black",
+        // },
+        // // bold: {},
+        // body: {
+        //     fontSize: 16,
+        // },
+        // small: {
+        //     fontSize: 14,
+        //     color: "primary",
+        // },
+        // h2: {
+        //     fontSize: 23,
+        //     fontWeight: "bold",
+        //     color: "primary",
+        // },
+        // h4: {
+        //     fontWeight: "bold",
+        //     fontSize: 14,
+        //     color: "primary",
+        // },
     },
 });
 
-export const darkTheme: Theme = {
-    ...theme,
-    colors: {
-        ...theme.colors,
-        text: palette.white,
-        background: palette.black,
-    },
-};
+// export const darkTheme: Theme = {
+//     ...theme,
+//     colors: {
+//         ...theme.colors,
+//         text: palette.white,
+//         background: palette.black,
+//     },
+// };
 export const useTheme = () => useReTheme<Theme>();
 
 type NamedStyles<T> = { [P in keyof T]: ViewStyle | TextStyle | ImageStyle };
+
+export type Color = { [C in keyof Theme["colors"]]: string };
 
 export const makeStyles =
     <T extends NamedStyles<T>>(styles: (theme: Theme) => NamedStyles<T>) =>
