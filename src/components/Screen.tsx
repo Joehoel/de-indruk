@@ -16,5 +16,5 @@ interface ScreenProps {
 export default function Screen({ children }: ScreenProps) {
     const styles = useStyles();
 
-    return <SafeAreaView style={styles.screen}>{children}</SafeAreaView>;
+    return <Box style={styles.screen}>{children}</Box>;
 }

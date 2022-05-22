@@ -17,3 +17,9 @@ export interface QuestionType {
     question: string;
     answer: string;
 }
+
+export interface Bericht {
+    title: string;
+    date: Date;
+    image: string;
+}

@@ -1,6 +1,12 @@
 import { ThemeConsumer } from "@rneui/themed";
 import { createTheme, useTheme as useReTheme } from "@shopify/restyle";
-import type { ImageStyle, TextStyle, ViewStyle } from "react-native";
+import type {
+    ImageStyle,
+    StyleProp,
+    StyleSheet,
+    TextStyle,
+    ViewStyle,
+} from "react-native";
 import { Dimensions } from "react-native";
 import palette from "./palette";
 
@@ -14,7 +20,7 @@ export const theme = createTheme({
     breakpoints: {},
     colors: {
         ...palette,
-        text: palette.darkBlue,
+        text: palette.darkBlue1,
         background: palette.white,
     },
     borderRadii: {
@@ -49,12 +55,12 @@ export const theme = createTheme({
         h2: {
             fontSize: 22,
             lineHeight: 27,
-            fontFamily: "Gilroy-Semibold",
+            fontFamily: "Gilroy-SemiBold",
             color: "text",
         },
         h3: {
             fontSize: 18,
-            fontFamily: "Gilroy-Semibold",
+            fontFamily: "Gilroy-SemiBold",
             lineHeight: 18,
             color: "text",
         },
@@ -62,6 +68,13 @@ export const theme = createTheme({
             fontSize: 18,
             fontFamily: "Gilroy-Bold",
             lineHeight: 18,
+        },
+        muted: {
+            fontFamily: "Gilroy-SemiBold",
+            fontSize: 15,
+            lineHeight: 18,
+            color: "text",
+            opacity: 0.3,
         },
         // defaults: {
         //     color: "black",
@@ -97,12 +110,16 @@ export const theme = createTheme({
 // };
 export const useTheme = () => useReTheme<Theme>();
 
-type NamedStyles<T> = { [P in keyof T]: ViewStyle | TextStyle | ImageStyle };
+// type NamedStyles<T> = {
+//     [P in keyof T]: ViewStyle | TextStyle | ImageStyle;
+// };
 
 export type Color = { [C in keyof Theme["colors"]]: string };
 
 export const makeStyles =
-    <T extends NamedStyles<T>>(styles: (theme: Theme) => NamedStyles<T>) =>
+    <T extends StyleSheet.NamedStyles<T> | StyleSheet.NamedStyles<any>, V>(
+        styles: (theme: Theme) => T | T
+    ) =>
     () => {
         const currentTheme = useTheme();
         return styles(currentTheme);
