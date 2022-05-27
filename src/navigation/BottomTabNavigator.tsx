@@ -1,49 +1,88 @@
 import TabItem from "@components/TabItem";
+import {
+  faBullhorn,
+  faCommentsAlt,
+  faGrid2,
+  faUsers,
+} from "@fortawesome/pro-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
-import { Feather, FontAwesome, Ionicons } from "@expo/vector-icons";
 import { useTheme } from "@lib/theme";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Avatar } from "@rneui/themed";
 import DashboardScreen from "@screens/DashboardScreen";
-import KoppelingenScreen from "@screens/KoppelingenScreen";
+import NieuwsScreen from "@screens/NieuwsScreen";
 import type { BottomTabList } from "@typings/navigation";
-import { View } from "react-native";
-import { faBell } from "@fortawesome/free-regular-svg-icons";
-import ActueelStackNavigator from "./ActueelStackNavigator";
-import ContactenTabNavigator from "./ContactenTabNavigator";
-import FaqTabNavigator from "./FaqTabNavigator";
-import ProfielStackNavigator from "./ProfielStackNavigator";
 
 const Tab = createBottomTabNavigator<BottomTabList>();
 
-export default function BottomTabNavigator() {
-    const theme = useTheme();
+const ICON_SIZE = 22;
 
-    return (
-        <Tab.Navigator
-            initialRouteName="ActueelStack"
-            screenOptions={{
-                headerShown: false,
-                tabBarShowLabel: false,
-                // tabBarShowLabel: false,
-                // tabBarActiveTintColor: theme.colors.black,
-                // headerTintColor: theme.colors.primary,
-            }}
-        >
-            <Tab.Screen
-                name="Dashboard"
-                options={{
-                    tabBarIcon: ({ color, focused, size }) => (
-                        <FontAwesomeIcon
-                            icon={faBell}
-                            size={20}
-                            color={color}
-                        />
-                    ),
-                }}
-                component={DashboardScreen}
-            />
-            {/* <Tab.Screen
+export default function BottomTabNavigator() {
+  const theme = useTheme();
+
+  return (
+    <Tab.Navigator
+      initialRouteName="ActueelStack"
+      screenOptions={{
+        headerShown: false,
+        tabBarShowLabel: false,
+        tabBarStyle: {
+          paddingHorizontal: theme.spacing.md,
+        },
+      }}
+    >
+      <Tab.Screen
+        name="Dashboard"
+        options={{
+          tabBarIcon: ({ color, focused, size }) => (
+            <TabItem focused={focused}>
+              <FontAwesomeIcon icon={faGrid2} size={ICON_SIZE} color={color} />
+            </TabItem>
+          ),
+        }}
+        component={DashboardScreen}
+      />
+      <Tab.Screen
+        name="Nieuws"
+        options={{
+          tabBarIcon: ({ color, focused, size }) => (
+            <TabItem focused={focused}>
+              <FontAwesomeIcon
+                icon={faBullhorn}
+                size={ICON_SIZE}
+                color={color}
+              />
+            </TabItem>
+          ),
+        }}
+        component={NieuwsScreen}
+      />
+      <Tab.Screen
+        name="Collegas"
+        options={{
+          tabBarIcon: ({ color, focused, size }) => (
+            <TabItem focused={focused}>
+              <FontAwesomeIcon icon={faUsers} size={ICON_SIZE} color={color} />
+            </TabItem>
+          ),
+        }}
+        component={NieuwsScreen}
+      />
+      <Tab.Screen
+        name="Berichten"
+        options={{
+          tabBarIcon: ({ color, focused, size }) => (
+            <TabItem focused={focused}>
+              <FontAwesomeIcon
+                icon={faCommentsAlt}
+                size={ICON_SIZE}
+                color={color}
+              />
+            </TabItem>
+          ),
+        }}
+        component={NieuwsScreen}
+      />
+      {/* <Tab.Screen
                 name="ActueelStack"
                 options={{
                     title: "Actueel",
@@ -127,6 +166,6 @@ export default function BottomTabNavigator() {
                 }}
                 component={ProfielStackNavigator}
             /> */}
-        </Tab.Navigator>
-    );
+    </Tab.Navigator>
+  );
 }

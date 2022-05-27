@@ -1,25 +1,33 @@
+import type { User } from "@ngneat/falso";
+import { DialogTitleProps } from "@rneui/base";
+
 export interface ItemType {
-    date: string;
-    tags?: string[];
-    title: string;
-    text: string;
-    icon?: string;
-    image: string;
+  date: string;
+  tags?: string[];
+  title: string;
+  text: string;
+  icon?: string;
+  image: string;
 }
 
 export interface KoppelingType {
-    title: string;
-    description: string;
-    url: string;
+  title: string;
+  description: string;
+  url: string;
 }
 
 export interface QuestionType {
-    question: string;
-    answer: string;
+  question: string;
+  answer: string;
 }
 
 export interface Bericht {
-    title: string;
-    date: Date;
-    image: string;
+  title: string;
+  date: Date;
+  image: string;
+}
+
+export interface Verjaardag {
+  date: Date;
+  user: User;
 }

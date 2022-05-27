@@ -9,32 +9,36 @@ import { StatusBar } from "expo-status-bar";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
 export default function App() {
-    const isLoadingComplete = useCachedResources();
-    const theme = useTheme();
+  const isLoadingComplete = useCachedResources();
+  const theme = useTheme();
 
-    if (!isLoadingComplete) {
-        return null;
-    }
+  if (!isLoadingComplete) {
+    return null;
+  }
 
-    const navigationTheme: typeof DefaultTheme = {
-        ...DefaultTheme,
-        colors: {
-            ...DefaultTheme.colors,
-            background: theme.colors.white,
-            primary: theme.colors.primary,
-        },
-    };
+  const navigationTheme: typeof DefaultTheme = {
+    ...DefaultTheme,
+    colors: {
+      ...DefaultTheme.colors,
+      background: theme.colors.white,
+      primary: theme.colors.primary,
+    },
+  };
 
-    return (
-        <RestyleProvider theme={reTheme}>
-            <ThemeProvider>
-                <NavigationContainer theme={navigationTheme}>
-                    <SafeAreaProvider>
-                        <BottomTabNavigator />
-                        <StatusBar style="dark" />
-                    </SafeAreaProvider>
-                </NavigationContainer>
-            </ThemeProvider>
-        </RestyleProvider>
-    );
+  return (
+    <RestyleProvider theme={reTheme}>
+      <ThemeProvider>
+        <NavigationContainer theme={navigationTheme}>
+          <SafeAreaProvider>
+            <BottomTabNavigator />
+            <StatusBar
+              //   style="dark"
+              translucent
+              backgroundColor={theme.colors.background}
+            />
+          </SafeAreaProvider>
+        </NavigationContainer>
+      </ThemeProvider>
+    </RestyleProvider>
+  );
 }
