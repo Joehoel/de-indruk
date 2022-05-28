@@ -1,12 +1,5 @@
-import { ThemeConsumer } from "@rneui/themed";
 import { createTheme, useTheme as useReTheme } from "@shopify/restyle";
-import type {
-  ImageStyle,
-  StyleProp,
-  StyleSheet,
-  TextStyle,
-  ViewStyle,
-} from "react-native";
+import type { StyleSheet } from "react-native";
 import { Dimensions } from "react-native";
 import palette from "./palette";
 
@@ -47,6 +40,12 @@ export const theme = createTheme({
       fontFamily: "Gilroy-Bold",
       color: "text",
     },
+    title: {
+      fontSize: 32,
+      lineHeight: 40,
+      fontFamily: "Gilroy-SemiBold",
+      color: "text",
+    },
     h1: {
       fontSize: 40,
       fontFamily: "Gilroy-Medium",
@@ -68,6 +67,12 @@ export const theme = createTheme({
       fontSize: 18,
       fontFamily: "Gilroy-Bold",
       lineHeight: 18,
+    },
+    h5: {
+      fontFamily: "Gilroy-Medium",
+      fontSize: 18,
+      lineHeight: 18,
+      color: "text",
     },
     muted: {
       fontFamily: "Gilroy-SemiBold",

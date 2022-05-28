@@ -1,6 +1,10 @@
 import BerichtCard from "@components/BerichtCard";
 import Card from "@components/Card";
+import LaatsteBerichten from "@components/LaatsteBerichten";
 import VerjaardagCard from "@components/VerjaardagCard";
+import Verjaardagen from "@components/Verjaardagen";
+import { berichten } from "@constants/berichten";
+import { verjaardagen } from "@constants/verjaardagen";
 import Box from "@elements/Box";
 import List from "@elements/List";
 import Text from "@elements/Text";
@@ -47,21 +51,6 @@ const useStyles = makeStyles(theme => ({
   berichten: { marginTop: 18 },
 }));
 
-const berichten: Bericht[] = randImg({ length: 4 }).map(img => {
-  return {
-    title: randSong(),
-    date: randPastDate(),
-    image: img,
-  };
-});
-
-const verjaardagen: Verjaardag[] = randUser({ length: 5 }).map(user => {
-  return {
-    user,
-    date: randSoonDate(),
-  };
-});
-
 export default function DashboardScreen() {
   const styles = useStyles();
 
@@ -71,8 +60,8 @@ export default function DashboardScreen() {
         <Header />
         <Greeting />
         <CardGrid />
-        <LaatsteBerichten />
-        <Verjaardagen />
+        <LaatsteBerichten berichten={berichten} />
+        <Verjaardagen verjaardagen={verjaardagen} />
       </ScrollView>
     </SafeAreaView>
   );
@@ -183,27 +172,4 @@ function CardGrid() {
   //     );
   //   }}
   // />
-}
-
-function LaatsteBerichten() {
-  return (
-    <List title="Laatste Berichten">
-      {berichten?.map(bericht => (
-        <BerichtCard key={`bericht-${bericht.date}`} bericht={bericht} />
-      ))}
-    </List>
-  );
-}
-
-function Verjaardagen() {
-  return (
-    <List title="Verjaardagen 🎉">
-      {verjaardagen?.map(verjaardag => (
-        <VerjaardagCard
-          key={`verjaardag-${verjaardag.date}`}
-          verjaardag={verjaardag}
-        />
-      ))}
-    </List>
-  );
 }

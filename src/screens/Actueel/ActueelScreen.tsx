@@ -3,21 +3,21 @@ import "react-native-get-random-values";
 import BerichtItem from "@components/BerichtItem";
 import SearchLayout from "@layout/SearchLayout";
 import {
-    randImg,
-    randJobTitle,
-    randPost,
-    randRecentDate,
-    randTextRange,
+  randImg,
+  randJobTitle,
+  randPost,
+  randRecentDate,
+  randTextRange,
 } from "@ngneat/falso";
 import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
 import { useState } from "react";
 import { FlatList, KeyboardAvoidingView, StyleSheet } from "react-native";
 
 const items = Array.from({ length: 20 }).map(i => ({
-    date: randRecentDate().toLocaleDateString(),
-    text: randTextRange({ min: 1000, max: 10000 }),
-    title: randJobTitle(),
-    image: randImg(),
+  date: randRecentDate().toLocaleDateString(),
+  text: randTextRange({ min: 1000, max: 10000 }),
+  title: randJobTitle(),
+  image: randImg(),
 }));
 
 // const items: Item[] = [
@@ -74,27 +74,27 @@ const items = Array.from({ length: 20 }).map(i => ({
 // ];
 
 export default function ActueelScreen() {
-    const [query, setQuery] = useState<string>("");
-    const [refreshing, setRefreshing] = useState(false);
-    const height = useBottomTabBarHeight();
+  const [query, setQuery] = useState<string>("");
+  const [refreshing, setRefreshing] = useState(false);
+  const height = useBottomTabBarHeight();
 
-    const handleRefresh = () => {
-        // TODO: Logica om nieuws op te halen
-        // console.log("Refresh");
-    };
+  const handleRefresh = () => {
+    // TODO: Logica om nieuws op te halen
+    // console.log("Refresh");
+  };
 
-    return (
-        <SearchLayout query={query} setQuery={setQuery}>
-            <KeyboardAvoidingView>
-                <FlatList
-                    data={items}
-                    onRefresh={handleRefresh}
-                    refreshing={refreshing}
-                    keyExtractor={(item, index) => `${item.date}-${index}`}
-                    contentContainerStyle={{ paddingBottom: height }}
-                    renderItem={({ item }) => <BerichtItem item={item} />}
-                />
-            </KeyboardAvoidingView>
-        </SearchLayout>
-    );
+  return (
+    <SearchLayout query={query} setQuery={setQuery}>
+      <KeyboardAvoidingView>
+        <FlatList
+          data={items}
+          onRefresh={handleRefresh}
+          refreshing={refreshing}
+          keyExtractor={(item, index) => `${item.date}-${index}`}
+          contentContainerStyle={{ paddingBottom: height }}
+          renderItem={({ item }) => <BerichtItem item={item} />}
+        />
+      </KeyboardAvoidingView>
+    </SearchLayout>
+  );
 }

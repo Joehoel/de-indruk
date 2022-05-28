@@ -1,42 +1,70 @@
-import spacing from "@constants/spacing";
-import { makeStyles } from "@lib/theme";
-import { useThemeMode } from "@rneui/themed";
+import Box from "@elements/Box";
+import Text from "@elements/Text";
+import { faSearch } from "@fortawesome/pro-regular-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
+import { makeStyles, useTheme } from "@lib/theme";
 import type { ReactNode, SetStateAction } from "react";
-import { Platform, StyleSheet, View } from "react-native";
-import SearchBar from "react-native-platform-searchbar";
+import { TextInput } from "react-native";
+import { Searchbar } from "react-native-paper";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const useStyles = makeStyles(theme => ({
-    search: {
-        padding: spacing.sm,
-    },
-    cancel: {
-        color: theme.colors.primary,
-    },
+  container: {
+    padding: theme.spacing.md,
+  },
+  search: {
+    borderRadius: 33,
+    backgroundColor: theme.colors.gray3,
+    paddingVertical: 21,
+    paddingHorizontal: 28,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginTop: 10,
+  },
+  input: {
+    ...theme.textVariants.h5,
+  },
+  cancel: {
+    color: theme.colors.primary,
+  },
 }));
 
 interface SearchLayoutProps {
-    children: ReactNode;
-    setQuery: React.Dispatch<SetStateAction<string>>;
-    query: string;
+  title?: string;
+  placeholder?: string;
+  children: ReactNode;
+  setQuery: React.Dispatch<SetStateAction<string>>;
+  query: string;
 }
 
 export default function SearchLayout({
-    children,
-    setQuery,
-    query,
+  title,
+  placeholder,
+  children,
+  setQuery,
+  query,
 }: SearchLayoutProps) {
-    const styles = useStyles();
+  const styles = useStyles();
+  const theme = useTheme();
 
-    return (
-        <View>
-            <SearchBar
-                value={query}
-                placeholder="Zoek..."
-                onChangeText={(text: string) => setQuery(text)}
-                style={styles.search}
-                cancelTextStyle={styles.cancel}
-            />
-            {children}
-        </View>
-    );
+  return (
+    <SafeAreaView style={styles.container}>
+      {title && <Text variant="title">{title}</Text>}
+      <Box style={styles.search}>
+        <TextInput
+          value={query}
+          style={styles.input}
+          onChangeText={value => setQuery(value)}
+          placeholder={placeholder ?? "Zoek..."}
+          placeholderTextColor="#9EA0B4"
+        />
+        <FontAwesomeIcon
+          icon={faSearch}
+          size={22}
+          color={theme.colors.darkBlue2}
+        />
+      </Box>
+      {children}
+    </SafeAreaView>
+  );
 }
