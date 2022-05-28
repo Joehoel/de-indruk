@@ -1,11 +1,9 @@
-import Box from "@elements/Box";
-import Text from "@elements/Text";
+import { Box, Text } from "@elements";
 import { faSearch } from "@fortawesome/pro-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { makeStyles, useTheme } from "@lib/theme";
 import type { ReactNode, SetStateAction } from "react";
 import { TextInput } from "react-native";
-import { Searchbar } from "react-native-paper";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const useStyles = makeStyles(theme => ({

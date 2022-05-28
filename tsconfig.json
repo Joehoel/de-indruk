@@ -7,16 +7,16 @@
     "strictNullChecks": true,
     "baseUrl": ".",
     "paths": {
-      "@components/*": ["src/components/*"],
-      "@elements/*": ["src/elements/*"],
-      "@hooks/*": ["src/hooks/*"],
+      "@components": ["src/components"],
+      "@elements": ["src/elements"],
+      "@hooks": ["src/hooks"],
       "@lib/*": ["src/lib/*"],
-      "@layout/*": ["src/layout/*"],
-      "@screens/*": ["src/screens/*"],
+      "@layout": ["src/layout"],
+      "@screens": ["src/screens"],
       "@stores/*": ["src/stores/*"],
-      "@typings/*": ["src/typings/*"],
       "@typings": ["src/typings"],
-      "@navigation/*": ["src/navigation/*"],
+      "@typings/*": ["src/typings/*"],
+      "@navigation": ["src/navigation"],
       "@constants/*": ["src/constants/*"],
       "@services/*": ["src/services/*"]
     }

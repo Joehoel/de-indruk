@@ -1,8 +1,7 @@
-import Box from "@elements/Box";
-import Text from "@elements/Text";
+import { Box, Text } from "@elements";
 import { makeStyles } from "@lib/theme";
 import { Avatar } from "@rneui/themed";
-import type { Verjaardag } from "@typings";
+import type { Verjaardag } from "@typings/global";
 import { TouchableOpacity } from "react-native";
 
 interface VerjaardagCardProps {

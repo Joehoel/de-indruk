@@ -1,33 +1,4 @@
-import type { User } from "@ngneat/falso";
-import { DialogTitleProps } from "@rneui/base";
+import * as Global from "./global";
+import * as Navigation from "./navigation";
 
-export interface ItemType {
-  date: string;
-  tags?: string[];
-  title: string;
-  text: string;
-  icon?: string;
-  image: string;
-}
-
-export interface KoppelingType {
-  title: string;
-  description: string;
-  url: string;
-}
-
-export interface QuestionType {
-  question: string;
-  answer: string;
-}
-
-export interface Bericht {
-  title: string;
-  date: Date;
-  image: string;
-}
-
-export interface Verjaardag {
-  date: Date;
-  user: User;
-}
+export { Global, Navigation };

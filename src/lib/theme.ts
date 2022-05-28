@@ -31,7 +31,9 @@ export const theme = createTheme({
   zIndices: {},
   cardVariants: {},
   textVariants: {
-    defaults: {},
+    defaults: {
+      color: "text",
+    },
     semibold: {
       fontFamily: "Gilroy-SemiBold",
       color: "text",
@@ -72,7 +74,6 @@ export const theme = createTheme({
       fontFamily: "Gilroy-Medium",
       fontSize: 18,
       lineHeight: 18,
-      color: "text",
     },
     muted: {
       fontFamily: "Gilroy-SemiBold",

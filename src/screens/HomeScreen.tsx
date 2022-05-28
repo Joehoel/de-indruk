@@ -1,5 +1,4 @@
-import Box from "@elements/Box";
-import Text from "@elements/Text";
+import { Box, Text } from "@elements";
 
 export default function HomeScreen() {
   return (

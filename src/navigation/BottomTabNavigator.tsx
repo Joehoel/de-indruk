@@ -1,4 +1,4 @@
-import TabItem from "@components/TabItem";
+import { TabItem } from "@components";
 import {
   faBullhorn,
   faCommentsAlt,
@@ -8,8 +8,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { useTheme } from "@lib/theme";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import DashboardScreen from "@screens/DashboardScreen";
-import NieuwsScreen from "@screens/NieuwsScreen";
+import { DashboardScreen, NieuwsScreen } from "@screens";
 import type { BottomTabList } from "@typings/navigation";
 
 const Tab = createBottomTabNavigator<BottomTabList>();

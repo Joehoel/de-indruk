@@ -3,7 +3,7 @@ import type {
   NavigatorScreenParams,
 } from "@react-navigation/native";
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
-import type { ItemType } from "@typings";
+import type { ItemType } from "./global";
 
 // Tabs op de Actueel pagina
 export type ActueelTabList = {

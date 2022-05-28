@@ -1,4 +1,4 @@
-import Box from "@elements/Box";
+import { Box } from "@elements";
 import { useTheme } from "@lib/theme";
 import type { ReactNode } from "react";
 import { View } from "react-native";

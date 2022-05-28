@@ -1,8 +1,7 @@
-import LaatsteBerichten from "@components/LaatsteBerichten";
+import { LaatsteBerichten } from "@components";
 import { berichten } from "@constants/berichten";
-import List from "@elements/List";
-import Text from "@elements/Text";
-import SearchLayout from "@layout/SearchLayout";
+import { List, Text } from "@elements";
+import { SearchLayout } from "@layout";
 import { useState } from "react";
 
 export default function NieuwsScreen() {

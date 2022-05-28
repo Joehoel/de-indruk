@@ -1,5 +1,5 @@
-import List from "@elements/List";
-import type { Verjaardag } from "@typings";
+import { List } from "@elements";
+import type { Verjaardag } from "@typings/global";
 import VerjaardagCard from "./VerjaardagCard";
 
 interface VerjaardagenProps {

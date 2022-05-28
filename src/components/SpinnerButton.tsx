@@ -1,4 +1,4 @@
-import Text from "@elements/Text";
+import { Text } from "@elements";
 import { makeStyles } from "@lib/theme";
 import type { TouchableHighlightProps } from "react-native";
 import { ActivityIndicator, TouchableHighlight } from "react-native";

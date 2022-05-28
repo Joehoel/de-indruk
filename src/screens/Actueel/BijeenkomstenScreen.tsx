@@ -1,10 +1,9 @@
-import Box from "@components/Box";
-import Text from "@components/Text";
+import { Box, Text } from "@elements";
 
 export default function BijeenkomstenScreen() {
-    return (
-        <Box>
-            <Text>Bijeenkomsten</Text>
-        </Box>
-    );
+  return (
+    <Box>
+      <Text>Bijeenkomsten</Text>
+    </Box>
+  );
 }

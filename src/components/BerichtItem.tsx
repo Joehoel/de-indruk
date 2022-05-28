@@ -1,6 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import { makeStyles, Text } from "@rneui/themed";
-import type { ItemType } from "@typings";
+import type { ItemType } from "@typings/global";
 import type { BerichtScreenNavigationProp } from "@typings/navigation";
 import { TouchableOpacity, View } from "react-native";
 

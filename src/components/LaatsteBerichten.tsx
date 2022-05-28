@@ -1,5 +1,5 @@
-import List from "@elements/List";
-import type { Bericht } from "@typings";
+import { List } from "@elements";
+import type { Bericht } from "@typings/global";
 import BerichtCard from "./BerichtCard";
 
 interface LaatsteBerichtenProps {

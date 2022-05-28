@@ -1,13 +1,7 @@
-import BerichtCard from "@components/BerichtCard";
-import Card from "@components/Card";
-import LaatsteBerichten from "@components/LaatsteBerichten";
-import VerjaardagCard from "@components/VerjaardagCard";
-import Verjaardagen from "@components/Verjaardagen";
+import { Card, LaatsteBerichten, Verjaardagen } from "@components";
 import { berichten } from "@constants/berichten";
 import { verjaardagen } from "@constants/verjaardagen";
-import Box from "@elements/Box";
-import List from "@elements/List";
-import Text from "@elements/Text";
+import { Box, Text } from "@elements";
 import type { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faBell } from "@fortawesome/free-regular-svg-icons";
 import {
@@ -17,15 +11,7 @@ import {
 } from "@fortawesome/pro-light-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { makeStyles, useTheme } from "@lib/theme";
-import {
-  randImg,
-  randPastDate,
-  randSong,
-  randSoonDate,
-  randUser,
-} from "@ngneat/falso";
 import { Avatar, Badge } from "@rneui/themed";
-import type { Bericht, Verjaardag } from "@typings";
 import { useMemo } from "react";
 import { ScrollView } from "react-native";
 import "react-native-get-random-values";
