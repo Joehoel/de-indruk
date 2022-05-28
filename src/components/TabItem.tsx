@@ -1,7 +1,7 @@
+import Box from "@elements/Box";
 import { useTheme } from "@lib/theme";
 import type { ReactNode } from "react";
 import { View } from "react-native";
-import Box from "./Box";
 
 interface TabItemProps {
   focused: boolean;

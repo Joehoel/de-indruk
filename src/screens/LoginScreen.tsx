@@ -1,10 +1,10 @@
-import Box from "@components/Box";
-import Text from "@components/Text";
+import Box from "@elements/Box";
+import Text from "@elements/Text";
 
 export default function LoginScreen() {
-    return (
-        <Box>
-            <Text>Login</Text>
-        </Box>
-    );
+  return (
+    <Box>
+      <Text>Login</Text>
+    </Box>
+  );
 }

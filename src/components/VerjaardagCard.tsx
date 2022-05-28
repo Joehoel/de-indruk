@@ -1,11 +1,9 @@
-import { faCalendar } from "@fortawesome/free-regular-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
-import { makeStyles, useTheme } from "@lib/theme";
+import Box from "@elements/Box";
+import Text from "@elements/Text";
+import { makeStyles } from "@lib/theme";
 import { Avatar } from "@rneui/themed";
 import type { Verjaardag } from "@typings";
-import { Image, TouchableOpacity } from "react-native";
-import Box from "./Box";
-import Text from "./Text";
+import { TouchableOpacity } from "react-native";
 
 interface VerjaardagCardProps {
   verjaardag: Verjaardag;

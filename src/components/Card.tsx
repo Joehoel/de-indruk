@@ -1,14 +1,9 @@
+import Text from "@elements/Text";
 import type { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { makeStyles } from "@lib/theme";
 import type { ViewStyle } from "react-native";
-import {
-  TouchableOpacity,
-  TouchableHighlight,
-  TouchableNativeFeedback,
-} from "react-native";
-
-import Text from "./Text";
+import { TouchableOpacity } from "react-native";
 
 const useStyles = makeStyles(theme => ({
   card: {

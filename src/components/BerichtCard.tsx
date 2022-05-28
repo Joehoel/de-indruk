@@ -1,10 +1,10 @@
+import Box from "@elements/Box";
+import Text from "@elements/Text";
 import { faCalendar } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { makeStyles, useTheme } from "@lib/theme";
 import type { Bericht } from "@typings";
 import { Image, TouchableOpacity } from "react-native";
-import Box from "./Box";
-import Text from "./Text";
 
 interface BerichtCardProps {
   bericht: Bericht;

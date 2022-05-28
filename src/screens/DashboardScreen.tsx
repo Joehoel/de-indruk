@@ -1,9 +1,9 @@
 import BerichtCard from "@components/BerichtCard";
-import Box from "@components/Box";
 import Card from "@components/Card";
-import List from "@components/List";
-import Text from "@components/Text";
 import VerjaardagCard from "@components/VerjaardagCard";
+import Box from "@elements/Box";
+import List from "@elements/List";
+import Text from "@elements/Text";
 import type { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faBell } from "@fortawesome/free-regular-svg-icons";
 import {
