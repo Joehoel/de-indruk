@@ -42,7 +42,7 @@ export default function Card({ text, icon, color, style, onPress }: CardProps) {
         color="white"
         style={styles.icon}
       />
-      <Text color="white" variant="h4" textAlign="center">
+      <Text color="white" variant="h3" textAlign="center">
         {text}
       </Text>
     </TouchableOpacity>

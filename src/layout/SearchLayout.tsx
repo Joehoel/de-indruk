@@ -20,7 +20,9 @@ const useStyles = makeStyles(theme => ({
     marginTop: 10,
   },
   input: {
-    ...theme.textVariants.h5,
+    ...theme.textVariants.h6,
+    flex: 1,
+    marginRight: 10,
   },
   cancel: {
     color: theme.colors.primary,

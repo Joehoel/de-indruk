@@ -8,8 +8,11 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { useTheme } from "@lib/theme";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { DashboardScreen, NieuwsScreen } from "@screens";
 import type { BottomTabList } from "@typings/navigation";
+import BerichtenStackNavigator from "./BerichtenStackNavigator";
+import CollegasStackNavigator from "./CollegasStackNavigator";
+import DashboardStackNavigator from "./DashboardStackNavigator";
+import NieuwsStackNavigator from "./NieuwsStackNavigator";
 
 const Tab = createBottomTabNavigator<BottomTabList>();
 
@@ -20,7 +23,7 @@ export default function BottomTabNavigator() {
 
   return (
     <Tab.Navigator
-      initialRouteName="ActueelStack"
+      initialRouteName="DashboardStack"
       screenOptions={{
         headerShown: false,
         tabBarShowLabel: false,
@@ -30,19 +33,21 @@ export default function BottomTabNavigator() {
       }}
     >
       <Tab.Screen
-        name="Dashboard"
+        name="DashboardStack"
         options={{
+          title: "Dashboard",
           tabBarIcon: ({ color, focused, size }) => (
             <TabItem focused={focused}>
               <FontAwesomeIcon icon={faGrid2} size={ICON_SIZE} color={color} />
             </TabItem>
           ),
         }}
-        component={DashboardScreen}
+        component={DashboardStackNavigator}
       />
       <Tab.Screen
-        name="Nieuws"
+        name="NieuwsStack"
         options={{
+          title: "Nieuws",
           tabBarIcon: ({ color, focused, size }) => (
             <TabItem focused={focused}>
               <FontAwesomeIcon
@@ -53,21 +58,22 @@ export default function BottomTabNavigator() {
             </TabItem>
           ),
         }}
-        component={NieuwsScreen}
+        component={NieuwsStackNavigator}
       />
       <Tab.Screen
-        name="Collegas"
+        name="CollegasStack"
         options={{
+          title: "Collegas",
           tabBarIcon: ({ color, focused, size }) => (
             <TabItem focused={focused}>
               <FontAwesomeIcon icon={faUsers} size={ICON_SIZE} color={color} />
             </TabItem>
           ),
         }}
-        component={NieuwsScreen}
+        component={CollegasStackNavigator}
       />
       <Tab.Screen
-        name="Berichten"
+        name="BerichtenStack"
         options={{
           tabBarIcon: ({ color, focused, size }) => (
             <TabItem focused={focused}>
@@ -79,7 +85,7 @@ export default function BottomTabNavigator() {
             </TabItem>
           ),
         }}
-        component={NieuwsScreen}
+        component={BerichtenStackNavigator}
       />
       {/* <Tab.Screen
                 name="ActueelStack"

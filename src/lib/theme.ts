@@ -54,23 +54,28 @@ export const theme = createTheme({
       color: "text",
     },
     h2: {
+      fontSize: 26,
+      fontFamily: "Gilroy-SemiBold",
+      lineHeight: 32,
+    },
+    h3: {
       fontSize: 22,
       lineHeight: 27,
       fontFamily: "Gilroy-SemiBold",
       color: "text",
     },
-    h3: {
+    h4: {
       fontSize: 18,
       fontFamily: "Gilroy-SemiBold",
       lineHeight: 18,
       color: "text",
     },
-    h4: {
+    h5: {
       fontSize: 18,
       fontFamily: "Gilroy-Bold",
       lineHeight: 18,
     },
-    h5: {
+    h6: {
       fontFamily: "Gilroy-Medium",
       fontSize: 18,
       lineHeight: 18,
@@ -81,6 +86,18 @@ export const theme = createTheme({
       lineHeight: 18,
       color: "text",
       opacity: 0.3,
+    },
+    body: {
+      fontFamily: "SFNS-Display-Regular",
+      fontSize: 18,
+      lineHeight: 32,
+      color: "body",
+    },
+    back: {
+      fontFamily: "Gilroy-SemiBold",
+      fontSize: 16,
+      lineHeight: 20,
+      color: "white",
     },
     // defaults: {
     //     color: "black",

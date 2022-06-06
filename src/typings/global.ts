@@ -21,12 +21,15 @@ export interface QuestionType {
 }
 
 export interface Bericht {
+  id: string;
   title: string;
   date: Date;
   image: string;
+  text: string;
 }
 
 export interface Verjaardag {
+  id: string;
   date: Date;
   user: User;
 }

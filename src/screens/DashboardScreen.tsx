@@ -10,8 +10,21 @@ import {
   faUsers,
 } from "@fortawesome/pro-light-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
+import type { Theme } from "@lib/theme";
 import { makeStyles, useTheme } from "@lib/theme";
+import type { BottomTabNavigationProp } from "@react-navigation/bottom-tabs";
+import { useNavigation } from "@react-navigation/native";
+import type {
+  NativeStackNavigationProp,
+  NativeStackScreenProps,
+} from "@react-navigation/native-stack";
 import { Avatar, Badge } from "@rneui/themed";
+import type {
+  BottomTabList,
+  BottomTabListItem,
+  DashboardStackList,
+} from "@typings/navigation";
+import { StatusBar } from "expo-status-bar";
 import { useMemo } from "react";
 import { ScrollView } from "react-native";
 import "react-native-get-random-values";
@@ -49,6 +62,7 @@ export default function DashboardScreen() {
         <LaatsteBerichten berichten={berichten} />
         <Verjaardagen verjaardagen={verjaardagen} />
       </ScrollView>
+      <StatusBar style="dark" />
     </SafeAreaView>
   );
 }
@@ -103,24 +117,38 @@ function Greeting() {
   );
 }
 
+const cards: {
+  screen: BottomTabListItem;
+  text: string;
+  icon: IconProp;
+  color: keyof Theme["colors"];
+}[] = [
+  {
+    text: "Nieuws",
+    icon: faBullhorn,
+    color: "primary",
+    screen: "NieuwsStack",
+  },
+  {
+    text: "Collega's",
+    icon: faUsers,
+    color: "tertiary",
+    screen: "CollegasStack",
+  },
+  {
+    text: "FAQ",
+    icon: faMessageQuestion,
+    color: "secondary",
+    screen: "BerichtenStack",
+  },
+];
+
 function CardGrid() {
+  const navigation = useNavigation<BottomTabNavigationProp<BottomTabList>>();
   const theme = useTheme();
 
   const spacing = 16;
   const columns = 2;
-
-  const cards: { text: string; icon: IconProp; color: string }[] = useMemo(
-    () => [
-      { text: "Nieuws", icon: faBullhorn, color: theme.colors.primary },
-      { text: "Collega's", icon: faUsers, color: theme.colors.tertiary },
-      {
-        text: "FAQ",
-        icon: faMessageQuestion,
-        color: theme.colors.secondary,
-      },
-    ],
-    [theme.colors.primary, theme.colors.secondary, theme.colors.tertiary]
-  );
 
   return (
     <Box flexWrap="wrap" flexDirection="row">
@@ -128,12 +156,16 @@ function CardGrid() {
         <Card
           key={`card-${card.text}`}
           text={card.text}
-          color={card.color}
+          color={theme.colors[card.color]}
           icon={card.icon}
           style={{
             marginBottom: spacing,
             marginLeft: index % columns !== 0 ? spacing : 0,
           }}
+          onPress={() =>
+            // @ts-ignore
+            card.screen ? navigation.navigate(card.screen) : undefined
+          }
         />
       ))}
     </Box>

@@ -20,7 +20,7 @@ export default function List({ title, children }: ListProps) {
 
   return (
     <Box style={styles.title}>
-      <Text variant="h2">{title}</Text>
+      <Text variant="h3">{title}</Text>
 
       <Box style={styles.list}>{children}</Box>
     </Box>

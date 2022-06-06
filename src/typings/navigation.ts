@@ -1,55 +1,34 @@
-import type {
-  NavigationProp,
-  NavigatorScreenParams,
-} from "@react-navigation/native";
-import type { NativeStackScreenProps } from "@react-navigation/native-stack";
-import type { ItemType } from "./global";
+import type { Bericht } from "./global";
 
-// Tabs op de Actueel pagina
-export type ActueelTabList = {
-  Actueel: undefined;
-  Bijeenkomsten: undefined;
-};
+export type BerichtParams = { bericht: Bericht };
 
-export type ActueelStackList = {
-  ActueelTabs: NavigatorScreenParams<ActueelTabList> | undefined;
-  Bericht: { item: ItemType };
-};
+export type WithBericht<Screens extends Record<string, unknown> | undefined> =
+  Screens & {
+    Bericht: BerichtParams;
+  };
 
-export type ProfielStackList = {
-  Profiel: undefined;
-  ProfielBewerken: undefined;
-};
-export type ProfielStackNavigationProp = NavigationProp<ProfielStackList>;
+export type DashboardStackList = WithBericht<{
+  Dashboard: undefined;
+}>;
 
-// Utility type om het gebruik van `useNavigation` makkelijker te maken
-export type BerichtScreenNavigationProp = NavigationProp<ActueelStackList>;
-export type BerichtScreenProps = NativeStackScreenProps<
-  ActueelStackList,
-  "Bericht"
->;
+export type NieuwsStackList = WithBericht<{
+  Nieuws: undefined;
+}>;
+
+export type CollegasStackList = WithBericht<{
+  Collegas: undefined;
+}>;
+
+export type BerichtenStackList = WithBericht<{
+  Berichten: undefined;
+}>;
 
 // Alle tabs die zichtbaar zijn in de bottom bar
 export type BottomTabList = {
-  Dashboard: undefined;
-  Nieuws: undefined;
-  Collegas: undefined;
-  Berichten: undefined;
-  ActueelStack: NavigatorScreenParams<ActueelStackList> | undefined;
-  ContactenTabs: NavigatorScreenParams<ContactenTabList> | undefined;
-  FaqTabs: NavigatorScreenParams<FaqTabList>;
-  Koppelingen: undefined;
-  ProfielStack: undefined;
+  DashboardStack: DashboardStackList;
+  NieuwsStack: NieuwsStackList;
+  CollegasStack: CollegasStackList;
+  BerichtenStack: BerichtenStackList;
 };
 
-// Alle tabbladen binnen de contacten view
-export type ContactenTabList = {
-  Contactgegevens: undefined;
-  Jubilea: undefined;
-};
-
-// Alle tabbladen binnen de FAQ view
-export type FaqTabList = {
-  Faq: undefined;
-  Ask: undefined;
-};
+export type BottomTabListItem = keyof BottomTabList;

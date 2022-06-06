@@ -5,21 +5,16 @@ import { SearchLayout } from "@layout";
 import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
 
-export default function NieuwsScreen() {
+export default function CollegasScreen() {
   const [query, setQuery] = useState<string>("");
 
   return (
     <SearchLayout
       query={query}
       setQuery={setQuery}
-      title="Nieuws"
-      placeholder="Zoek berichten..."
+      title="Collega's"
+      placeholder="Zoek collega's..."
     >
-      <List title="Categorieën">
-        <Text>List</Text>
-      </List>
-
-      <LaatsteBerichten berichten={berichten} />
       <StatusBar style="dark" />
     </SearchLayout>
   );

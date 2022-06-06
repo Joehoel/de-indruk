@@ -4,9 +4,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { makeStyles, useTheme } from "@lib/theme";
 import type { Bericht } from "@typings/global";
 import { Image, TouchableOpacity } from "react-native";
+import Date from "./Date";
 
 interface BerichtCardProps {
   bericht: Bericht;
+  onPress: () => void;
 }
 
 const useStyles = makeStyles(theme => ({
@@ -20,36 +22,23 @@ const useStyles = makeStyles(theme => ({
   header: {
     marginBottom: 12,
   },
-  icon: {
-    opacity: 1 - theme.textVariants.muted.opacity,
-    marginRight: 6,
-  },
 }));
 
-export default function BerichtCard({ bericht }: BerichtCardProps) {
+export default function BerichtCard({ bericht, onPress }: BerichtCardProps) {
   const theme = useTheme();
   const styles = useStyles();
 
   return (
-    <TouchableOpacity style={{ marginBottom: 16, flexDirection: "row" }}>
+    <TouchableOpacity
+      onPress={onPress}
+      style={{ marginBottom: 16, flexDirection: "row" }}
+    >
       <Image source={{ uri: bericht.image }} style={styles.image} />
       <Box style={styles.content}>
-        <Text variant="h3" style={styles.header} numberOfLines={1}>
+        <Text variant="h4" style={styles.header} numberOfLines={1}>
           {bericht.title}
         </Text>
-        <Box flexDirection="row">
-          <FontAwesomeIcon
-            icon={faCalendar}
-            size={15}
-            color={theme.colors.text}
-            style={styles.icon}
-          />
-          <Text variant="muted">
-            {Intl.DateTimeFormat("nl-NL", {
-              dateStyle: "long",
-            }).format(bericht.date)}
-          </Text>
-        </Box>
+        <Date date={bericht.date} />
       </Box>
     </TouchableOpacity>
   );

@@ -4,17 +4,17 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import Box from "./Box";
 
 const useStyles = makeStyles(theme => ({
-    screen: {
-        padding: theme.spacing.md,
-    },
+  screen: {
+    padding: theme.spacing.md,
+  },
 }));
 
 interface ScreenProps {
-    children?: ReactNode;
+  children?: ReactNode;
 }
 
 export default function Screen({ children }: ScreenProps) {
-    const styles = useStyles();
+  const styles = useStyles();
 
-    return <Box style={styles.screen}>{children}</Box>;
+  return <Box style={styles.screen}>{children}</Box>;
 }

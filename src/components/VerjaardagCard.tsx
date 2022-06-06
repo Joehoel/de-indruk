@@ -31,7 +31,7 @@ export default function VerjaardagCard({ verjaardag }: VerjaardagCardProps) {
       <Avatar rounded source={{ uri: verjaardag.user.img }} size={40} />
 
       <Box style={styles.content}>
-        <Text variant="h3" style={styles.header}>
+        <Text variant="h4" style={styles.header}>
           {verjaardag.user.firstName} {verjaardag.user.lastName}
         </Text>
         <Text variant="muted">
