@@ -5,6 +5,7 @@ import { ThemeProvider } from "@rneui/themed";
 import { ThemeProvider as RestyleProvider } from "@shopify/restyle";
 import { StatusBar, setStatusBarBackgroundColor } from "expo-status-bar";
 import { SafeAreaProvider } from "react-native-safe-area-context";
+import { QueryClient, QueryClientProvider } from "react-query";
 import useCachedResources from "./hooks/useCachedResources";
 import BottomTabNavigator from "./navigation/BottomTabNavigator";
 
@@ -25,16 +26,20 @@ export default function App() {
     },
   };
 
+  const client = new QueryClient();
+
   return (
-    <RestyleProvider theme={reTheme}>
-      <ThemeProvider>
-        <NavigationContainer theme={navigationTheme}>
-          <SafeAreaProvider>
-            <BottomTabNavigator />
-            <StatusBar style="dark" animated />
-          </SafeAreaProvider>
-        </NavigationContainer>
-      </ThemeProvider>
-    </RestyleProvider>
+    <QueryClientProvider client={client}>
+      <RestyleProvider theme={reTheme}>
+        <ThemeProvider>
+          <NavigationContainer theme={navigationTheme}>
+            <SafeAreaProvider>
+              <BottomTabNavigator />
+              <StatusBar style="dark" animated />
+            </SafeAreaProvider>
+          </NavigationContainer>
+        </ThemeProvider>
+      </RestyleProvider>
+    </QueryClientProvider>
   );
 }

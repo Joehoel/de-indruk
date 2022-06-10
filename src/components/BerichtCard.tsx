@@ -1,6 +1,4 @@
 import { Box, Text } from "@elements";
-import { faCalendar } from "@fortawesome/free-regular-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { makeStyles, useTheme } from "@lib/theme";
 import type { Bericht } from "@typings/global";
 import { Image, TouchableOpacity } from "react-native";

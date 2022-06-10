@@ -1,11 +1,17 @@
 import { LaatsteBerichten } from "@components";
 import { berichten } from "@constants/berichten";
-import { List, Text } from "@elements";
+import { Box, List, Pill, Text } from "@elements";
 import { SearchLayout } from "@layout";
+import { makeStyles } from "@lib/theme";
 import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
 
+const useStyles = makeStyles(theme => ({
+  categories: { flexDirection: "row", flexWrap: "wrap" },
+}));
+
 export default function NieuwsScreen() {
+  const styles = useStyles();
   const [query, setQuery] = useState<string>("");
 
   return (
@@ -16,7 +22,13 @@ export default function NieuwsScreen() {
       placeholder="Zoek berichten..."
     >
       <List title="Categorieën">
-        <Text>List</Text>
+        <Box style={styles.categories}>
+          <Pill text="🏢 Kantoor" />
+          <Pill text="💪🏻 Teambuilding" />
+          <Pill text="📈 Productiviteit" />
+          <Pill text="💸 Targets" />
+          <Pill text="+5" />
+        </Box>
       </List>
 
       <LaatsteBerichten berichten={berichten} />
