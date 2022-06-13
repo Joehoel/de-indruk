@@ -25,8 +25,8 @@ import type {
   DashboardStackList,
 } from "@typings/navigation";
 import { StatusBar } from "expo-status-bar";
-import { useMemo } from "react";
-import { ScrollView } from "react-native";
+import { Fragment, useMemo } from "react";
+import { ScrollView, TouchableHighlight, TouchableOpacity } from "react-native";
 import "react-native-get-random-values";
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -73,7 +73,11 @@ function Header() {
 
   return (
     <Box style={styles.header}>
-      <Box>
+      <TouchableOpacity
+        onPress={() => {
+          // TODO: ...
+        }}
+      >
         <FontAwesomeIcon
           icon={faBell}
           size={20}
@@ -91,15 +95,21 @@ function Header() {
             backgroundColor: theme.colors.primary,
           }}
         />
-      </Box>
-      <Avatar
-        containerStyle={{ marginLeft: 20 }}
-        rounded
-        size={48}
-        source={{
-          uri: "https://avatars.githubusercontent.com/u/31251240?s=400&u=54c0df6f19ffa5e937cd0d4dce274c280a402d61&v=4",
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => {
+          // TODO: ...
         }}
-      />
+      >
+        <Avatar
+          containerStyle={{ marginLeft: 20 }}
+          rounded
+          size={48}
+          source={{
+            uri: "https://avatars.githubusercontent.com/u/31251240?s=400&u=54c0df6f19ffa5e937cd0d4dce274c280a402d61&v=4",
+          }}
+        />
+      </TouchableOpacity>
     </Box>
   );
 }
