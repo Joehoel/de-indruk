@@ -1,6 +1,3 @@
-import { LaatsteBerichten } from "@components";
-import { berichten } from "@constants/berichten";
-import { List, Text } from "@elements";
 import { SearchLayout } from "@layout";
 import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
