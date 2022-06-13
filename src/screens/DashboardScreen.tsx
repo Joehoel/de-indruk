@@ -55,7 +55,7 @@ export default function DashboardScreen() {
 
   return (
     <SafeAreaView edges={["top"]}>
-      <ScrollView style={styles.container} scrollEventThrottle={16}>
+      <ScrollView style={styles.container}>
         <Header />
         <Greeting />
         <CardGrid />
