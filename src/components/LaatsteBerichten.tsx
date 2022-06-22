@@ -3,6 +3,7 @@ import { useNavigation } from "@react-navigation/native";
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import type { Bericht } from "@typings/global";
 import type { DashboardStackList } from "@typings/navigation";
+import { ScrollView } from "react-native";
 import BerichtCard from "./BerichtCard";
 
 interface LaatsteBerichtenProps {
@@ -18,7 +19,7 @@ export default function LaatsteBerichten({
     useNavigation<NativeStackNavigationProp<DashboardStackList>>();
 
   return (
-    <List title="Laatste Berichten">
+    <List title="Laatste berichten">
       {berichten?.slice(0, length || 4).map(bericht => (
         <BerichtCard
           onPress={() => navigation.push("Bericht", { bericht })}

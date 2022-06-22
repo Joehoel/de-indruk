@@ -20,6 +20,7 @@ export default function useCachedResources() {
 
         await Font.loadAsync({
           "Gilroy-SemiBold": require("../../assets/fonts/Gilroy-SemiBold.ttf"),
+          "Gilroy-Regular": require("../../assets/fonts/Gilroy-Regular.ttf"),
           "Gilroy-Bold": require("../../assets/fonts/Gilroy-Bold.ttf"),
           "Gilroy-Medium": require("../../assets/fonts/Gilroy-Medium.ttf"),
           "SFNS-Display-Regular": require("../../assets/fonts/SFNS-Display-Regular.ttf"),

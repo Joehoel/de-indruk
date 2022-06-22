@@ -1,8 +1,42 @@
+import { collegas } from "@constants/collegas";
+import { Box, Text } from "@elements";
 import { SearchLayout } from "@layout";
+import { makeStyles } from "@lib/theme";
+import { Avatar } from "@rneui/themed";
 import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
+import { AlphabetList } from "react-native-section-alphabet-list";
+
+const useStyles = makeStyles(theme => ({
+  list: {
+    paddingHorizontal: theme.spacing.md,
+    backgroundColor: "transparent",
+  },
+  title: {
+    fontSize: 20,
+    fontFamily: theme.textVariants.semibold.fontFamily,
+    color: theme.textVariants.semibold.color,
+    lineHeight: 25,
+  },
+  name: {
+    fontSize: 18,
+    lineHeight: 22,
+    fontFamily: "Gilroy-Regular",
+  },
+  index: {
+    // width: 100,
+    // zIndex: 100,
+    // backgroundColor: "red",
+  },
+}));
+
+const data = collegas.map(c => ({
+  key: c.id,
+  value: `${c.user.firstName} ${c.user.lastName}`,
+}));
 
 export default function CollegasScreen() {
+  const styles = useStyles();
   const [query, setQuery] = useState<string>("");
 
   return (
@@ -11,7 +45,39 @@ export default function CollegasScreen() {
       setQuery={setQuery}
       title="Collega's"
       placeholder="Zoek collega's..."
+      padding={false}
     >
+      <AlphabetList
+        data={data}
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={styles.list}
+        ItemSeparatorComponent={() => (
+          <Box width="100%" backgroundColor="gray1" height={1} />
+        )}
+        SectionSeparatorComponent={() => (
+          <Box width="100%" backgroundColor="gray1" height={1} />
+        )}
+        renderCustomSectionHeader={section => (
+          <Box backgroundColor="background" paddingVertical="xs">
+            <Text style={styles.title}>{section.title}</Text>
+          </Box>
+        )}
+        renderCustomItem={({ key, value }) => {
+          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+          const collega = collegas.find(c => c.id === key)!;
+
+          return (
+            <Box flexDirection="row" alignItems="center" paddingVertical="xs">
+              <Avatar source={{ uri: collega?.user.img }} rounded />
+              <Text style={styles.name} marginLeft="xs">
+                {collega.user.firstName}{" "}
+                <Text variant="semibold">{collega.user.lastName}</Text>
+              </Text>
+            </Box>
+          );
+        }}
+        indexLetterStyle={styles.index}
+      />
       <StatusBar style="dark" />
     </SearchLayout>
   );

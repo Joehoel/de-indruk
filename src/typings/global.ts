@@ -33,3 +33,9 @@ export interface Verjaardag {
   date: Date;
   user: User;
 }
+
+export interface Collega {
+  id: string;
+  user: User;
+  job: string;
+}
