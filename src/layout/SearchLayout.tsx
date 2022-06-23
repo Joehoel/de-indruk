@@ -4,8 +4,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { makeStyles, useTheme } from "@lib/theme";
 import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
 import type { ReactNode, SetStateAction } from "react";
-import { ScrollView, TextInput } from "react-native";
-import { useAnimatedStyle, useSharedValue } from "react-native-reanimated";
+import { useRef } from "react";
+import { Keyboard, TextInput, TouchableOpacity } from "react-native";
+import Animated, {
+  Extrapolation,
+  interpolate,
+  useAnimatedScrollHandler,
+  useAnimatedStyle,
+  useSharedValue,
+} from "react-native-reanimated";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const useStyles = makeStyles(theme => ({
@@ -27,14 +34,15 @@ const useStyles = makeStyles(theme => ({
   search: {
     borderRadius: 33,
     backgroundColor: theme.colors.gray3,
-    paddingVertical: 21,
     paddingHorizontal: 28,
     flexDirection: "row",
     justifyContent: "space-between",
     marginTop: 10,
+    alignItems: "center",
   },
   input: {
     ...theme.textVariants.h6,
+    paddingVertical: 21,
     flex: 1,
     marginRight: 10,
   },
@@ -67,48 +75,77 @@ export default function SearchLayout({
   // TODO: test if this works
   const height = useBottomTabBarHeight();
 
-  // const y = useSharedValue(0);
+  const scrollY = useSharedValue(0);
 
-  // const style = useAnimatedStyle(() => {
-  //   return {
-  //     shadowColor: "#000",
-  //     shadowOffset: {
-  //       width: 0,
-  //       height: 1,
-  //     },
-  //     shadowOpacity: 0.18,
-  //     shadowRadius: 1.0,
+  const scrollHandler = useAnimatedScrollHandler({
+    onScroll: e => {
+      scrollY.value = e.contentOffset.y;
+    },
+  });
 
-  //     elevation: 1,
-  //   };
-  // });
+  const style = useAnimatedStyle(() => {
+    const opacity = interpolate(
+      scrollY.value,
+      [0, 10],
+      [0, 0.18],
+      Extrapolation.CLAMP
+    );
+
+    return {
+      shadowColor: "#000",
+      shadowOffset: {
+        width: 0,
+        height: 1,
+      },
+      shadowOpacity: opacity,
+      shadowRadius: 1.0,
+      elevation: 1,
+    };
+  });
+
+  const inputRef = useRef<TextInput>(null);
 
   return (
     <SafeAreaView
       style={[styles.container, { marginBottom: height + theme.spacing.md }]}
     >
-      <Box style={[styles.header]}>
+      <Animated.View style={[styles.header, style]}>
         {title && <Text variant="title">{title}</Text>}
         <Box style={styles.search}>
           <TextInput
             value={query}
             style={styles.input}
+            ref={inputRef}
             onChangeText={value => setQuery(value)}
             placeholder={placeholder ?? "Zoek..."}
             placeholderTextColor="#9EA0B4"
           />
-          <FontAwesomeIcon
-            icon={faSearch}
-            size={22}
-            color={theme.colors.darkBlue2}
-          />
+          <TouchableOpacity
+            onPress={() => {
+              // TODO: Search
+              Keyboard.dismiss();
+            }}
+          >
+            <FontAwesomeIcon
+              icon={faSearch}
+              size={22}
+              color={theme.colors.darkBlue2}
+            />
+          </TouchableOpacity>
         </Box>
-      </Box>
+      </Animated.View>
 
       {!scroll ? (
         <Box style={padding ? styles.wrapper : null}>{children}</Box>
       ) : (
-        <ScrollView style={styles.wrapper}>{children}</ScrollView>
+        <Animated.ScrollView
+          style={styles.wrapper}
+          onScroll={scrollHandler}
+          showsVerticalScrollIndicator={false}
+          scrollEventThrottle={1}
+        >
+          {children}
+        </Animated.ScrollView>
       )}
     </SafeAreaView>
   );

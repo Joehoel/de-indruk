@@ -1,7 +1,9 @@
+/* eslint-disable no-return-assign */
 import { Box, Text } from "@elements";
 import { makeStyles, useTheme } from "@lib/theme";
 import type { Bericht } from "@typings/global";
 import { Image, TouchableOpacity } from "react-native";
+import { SharedElement } from "react-navigation-shared-element";
 import Date from "./Date";
 
 interface BerichtCardProps {
@@ -31,12 +33,21 @@ export default function BerichtCard({ bericht, onPress }: BerichtCardProps) {
       onPress={onPress}
       style={{ marginBottom: 16, flexDirection: "row" }}
     >
-      <Image source={{ uri: bericht.image }} style={styles.image} />
+      <SharedElement id={`bericht.${bericht.id}.image`}>
+        <Image source={{ uri: bericht.image }} style={styles.image} />
+      </SharedElement>
       <Box style={styles.content}>
-        <Text variant="h4" style={styles.header} numberOfLines={1}>
-          {bericht.title}
-        </Text>
-        <Date date={bericht.date} />
+        <SharedElement id={`bericht.${bericht.id}`}>
+          <SharedElement id={`bericht.${bericht.id}.title`}>
+            <Text variant="h4" style={styles.header} numberOfLines={1}>
+              {bericht.title}
+            </Text>
+          </SharedElement>
+
+          <SharedElement id={`bericht.${bericht.id}.date`}>
+            <Date date={bericht.date} />
+          </SharedElement>
+        </SharedElement>
       </Box>
     </TouchableOpacity>
   );

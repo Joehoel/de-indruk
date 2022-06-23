@@ -15,7 +15,6 @@ const useStyles = makeStyles(theme => ({
   title: {
     fontSize: 20,
     fontFamily: theme.textVariants.semibold.fontFamily,
-    color: theme.textVariants.semibold.color,
     lineHeight: 25,
   },
   name: {
@@ -57,9 +56,9 @@ export default function CollegasScreen() {
         SectionSeparatorComponent={() => (
           <Box width="100%" backgroundColor="gray1" height={1} />
         )}
-        renderCustomSectionHeader={section => (
+        renderCustomSectionHeader={({ title }) => (
           <Box backgroundColor="background" paddingVertical="xs">
-            <Text style={styles.title}>{section.title}</Text>
+            <Text style={styles.title}>{title}</Text>
           </Box>
         )}
         renderCustomItem={({ key, value }) => {
@@ -69,10 +68,20 @@ export default function CollegasScreen() {
           return (
             <Box flexDirection="row" alignItems="center" paddingVertical="xs">
               <Avatar source={{ uri: collega?.user.img }} rounded />
-              <Text style={styles.name} marginLeft="xs">
-                {collega.user.firstName}{" "}
-                <Text variant="semibold">{collega.user.lastName}</Text>
-              </Text>
+              <Box marginLeft="xs">
+                <Text style={styles.name}>
+                  {collega.user.firstName}{" "}
+                  <Text variant="semibold">{collega.user.lastName}</Text>
+                </Text>
+                <Text
+                  fontSize={14}
+                  lineHeight={14}
+                  fontFamily="Gilroy-Medium"
+                  opacity={0.5}
+                >
+                  {collega.job}
+                </Text>
+              </Box>
             </Box>
           );
         }}

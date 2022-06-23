@@ -14,19 +14,10 @@ import type { Theme } from "@lib/theme";
 import { makeStyles, useTheme } from "@lib/theme";
 import type { BottomTabNavigationProp } from "@react-navigation/bottom-tabs";
 import { useNavigation } from "@react-navigation/native";
-import type {
-  NativeStackNavigationProp,
-  NativeStackScreenProps,
-} from "@react-navigation/native-stack";
 import { Avatar, Badge } from "@rneui/themed";
-import type {
-  BottomTabList,
-  BottomTabListItem,
-  DashboardStackList,
-} from "@typings/navigation";
+import type { BottomTabList, BottomTabListItem } from "@typings/navigation";
 import { StatusBar } from "expo-status-bar";
-import { Fragment, useMemo } from "react";
-import { ScrollView, TouchableHighlight, TouchableOpacity } from "react-native";
+import { ScrollView, TouchableOpacity } from "react-native";
 import "react-native-get-random-values";
 import { SafeAreaView } from "react-native-safe-area-context";
 

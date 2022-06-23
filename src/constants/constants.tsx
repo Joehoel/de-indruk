@@ -1,12 +1,12 @@
 import { BackButton } from "@components";
-import type { NativeStackNavigationOptions } from "@react-navigation/native-stack";
+import type { StackNavigationOptions } from "@react-navigation/stack";
 
-export const BERICHT_SCREEN_OPTIONS: NativeStackNavigationOptions = {
-  headerShadowVisible: false,
-  headerTransparent: true,
+export const BERICHT_SCREEN_OPTIONS: StackNavigationOptions = {
+  // headerShadowVisible: false,
+  // headerTransparent: true,
   headerTitle: "",
-  headerBlurEffect: "systemUltraThinMaterialDark",
-  headerBackTitle: "Dashboard",
+
+  // headerBlurEffect: "systemUltraThinMaterialDark",
   headerLeft: ({ label, canGoBack }) =>
     canGoBack && <BackButton label={label} />,
 };
